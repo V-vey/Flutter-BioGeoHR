@@ -20,6 +20,7 @@ class Textbox extends StatelessWidget {
             color: Color(0xFF3A3A3A)
           ),
           decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 0),
             hintStyle: TextStyle(
               fontFamily: 'Roboto',
               fontSize: 16,
