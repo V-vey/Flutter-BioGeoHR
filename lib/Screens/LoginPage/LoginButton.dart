@@ -3,10 +3,10 @@ class Loginbutton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-
+    
   var button = 
     SizedBox(
-      width: 320,
+      width: 220,
       height: 40,
       child: 
       ElevatedButton(

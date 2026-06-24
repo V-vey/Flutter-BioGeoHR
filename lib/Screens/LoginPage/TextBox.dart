@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Textbox extends StatelessWidget {
+  final String text;
+  const Textbox({
+    super.key,
+    required this.text,
+  });
   // const TextBox({super.key});
-
   @override
   Widget build(BuildContext context) {
     var text = 
@@ -32,7 +36,7 @@ class Textbox extends StatelessWidget {
             ),
             border: OutlineInputBorder(),
             fillColor: Color(0xFFFCFCFC),
-            hintText: 'Enter your username',
+            hintText: this.text,
           ),
         ),
       );

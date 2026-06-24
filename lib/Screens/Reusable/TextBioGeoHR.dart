@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 
 class BioGeoHRLogo extends StatelessWidget {
-  const BioGeoHRLogo({super.key});
+  final double textSize; 
+  const BioGeoHRLogo({
+    super.key,
+    required this.textSize,
+    });
 
   @override
   Widget build(BuildContext context) {
     return RichText(
-      text: const TextSpan(
+      text: TextSpan(
         children: [
           TextSpan(
             text: 'BioGeo',
             style: TextStyle(
               fontFamily: 'Roboto',
-              fontSize: 48,
+              fontSize: textSize,
               fontWeight: FontWeight.bold,
               color: Color(0xFF2AAF56),
               decoration: TextDecoration.underline,
@@ -23,7 +27,7 @@ class BioGeoHRLogo extends StatelessWidget {
             text: 'HR',
             style: TextStyle(
               fontFamily: 'Roboto',
-              fontSize: 48,
+              fontSize: textSize,
               fontWeight: FontWeight.bold,
               color: Color(0xFF6675EC),
               decoration: TextDecoration.underline,
