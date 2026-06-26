@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
-class Textbox extends StatelessWidget {
-  final String text;
-  const Textbox({
-    super.key,
-    required this.text,
-  });
-  // const TextBox({super.key});
+class TextboxEmail extends StatelessWidget {
+  // const TextBoxEmail({super.key});
+  final TextEditingController emails = TextEditingController();
+  late String email;
   @override
   Widget build(BuildContext context) {
+
     var text = 
-      
       SizedBox(
         width: 320,
         height: 40,
         child: TextFormField(
+          keyboardType: TextInputType.emailAddress,
+          enableSuggestions: false,
+          autocorrect: false,
+          controller: emails,
           textAlign: TextAlign.center,
           textAlignVertical: TextAlignVertical.center,
           style: TextStyle(
@@ -36,10 +37,14 @@ class Textbox extends StatelessWidget {
             ),
             border: OutlineInputBorder(),
             fillColor: Color(0xFFFCFCFC),
-            hintText: this.text,
+            hintText: "Enter your Email",
           ),
         ),
       );
     return text;
+  }
+  String getEmail(){
+    email = emails.text;
+    return email;
   }
 }

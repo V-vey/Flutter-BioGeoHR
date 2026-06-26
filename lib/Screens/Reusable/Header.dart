@@ -10,6 +10,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyActions: false,
       title: const BioGeoHRLogo(textSize: 24),
       actions: [
         TextButton(
