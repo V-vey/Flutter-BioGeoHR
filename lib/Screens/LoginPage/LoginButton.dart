@@ -27,15 +27,14 @@ class Loginbutton extends StatelessWidget {
           foregroundColor: Colors.white, // Sets the text and icon color
         ),
           onPressed: () async{
-            await login.login(textEmail.getEmail(), textPassword.getPassword());
+            // await login.login(textEmail.getEmail(), textPassword.getPassword());
             
-            // Navigator.push(
-            // context,
-            //   MaterialPageRoute(
-            //     builder: (context) => homepage(),
-            //   ),
-            // );
-            
+            Navigator.push(
+            context,
+              MaterialPageRoute(
+                builder: (context) => homepage(),
+              ),
+            );
           }, 
         child: Text('Log-in',
           style: TextStyle(

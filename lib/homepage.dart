@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 //Reusable
 import 'Screens/Reusable/Header.dart';
 
+import 'Screens/Reusable/Navigation.dart';
+
+
 class homepage extends StatelessWidget {
   // const SecondPage({super.key});
 
@@ -12,6 +15,7 @@ class homepage extends StatelessWidget {
       appBar: const Header(),
       
       body: const Center(child: Text('Welcome to the next file!')),
+      bottomNavigationBar: Navigation(),
     );
   }
 }
