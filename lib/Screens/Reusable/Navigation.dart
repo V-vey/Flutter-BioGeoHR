@@ -1,26 +1,22 @@
 import 'package:flutter/material.dart';
 import 'TextBioGeoHR.dart';
 
-class Navigation extends StatefulWidget{
-
-  @override
-  State<Navigation> createState() => _NavigationState();
-}
-
-class _NavigationState extends State<Navigation> {
-  int myIndex = 0;
+class Navigation extends StatelessWidget{
+  final ValueChanged<int> onTap; 
+  final int myIndex;
+  const Navigation({
+    super.key,
+    required this.onTap,
+    required this.myIndex
+  });
 
   @override
   Widget build(BuildContext context) {
     return 
     BottomNavigationBar(
-      onTap: (index){
-        setState((){
-          myIndex = index;
-        });
-      },
+      onTap: onTap,
       currentIndex: myIndex,
-
+      type: BottomNavigationBarType.fixed,
       unselectedItemColor: Color(0xFF6675EC),
       selectedItemColor: Color(0xFF6675EC),
       selectedLabelStyle: TextStyle(
