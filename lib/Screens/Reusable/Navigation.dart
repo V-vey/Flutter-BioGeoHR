@@ -16,7 +16,7 @@ class Navigation extends StatelessWidget{
     BottomNavigationBar(
       onTap: onTap,
       currentIndex: myIndex,
-      type: BottomNavigationBarType.fixed,
+      type: BottomNavigationBarType.shifting,
       unselectedItemColor: Color(0xFF6675EC),
       selectedItemColor: Color(0xFF6675EC),
       selectedLabelStyle: TextStyle(

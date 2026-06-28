@@ -4,9 +4,14 @@ import 'Screens/Reusable/Header.dart';
 import 'Screens/Reusable/Navigation.dart';
 
 //Homepage
-import 'Screens/Homepage/Attendance.dart';
-import 'Screens/Homepage/LeaveBalance.dart';
-import 'Screens/Homepage/Payroll.dart';
+import 'Screens/Pages/Homepage/LeaveBalance.dart';
+import 'Screens/Pages/Homepage/Payroll.dart';
+
+//Pages
+import 'Screens/Pages/Home.dart';
+import 'Screens/Pages/Attendance.dart';
+import 'Screens/Pages/Leave.dart';
+import 'Screens/Pages/Profile.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -18,11 +23,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage>{
   int _currentIndex = 0;
   final List<Widget> _widgetList = [
-    Container(
-      width: 100,
-      height: 20,
-      color: Colors.green,
-    ),
+    Home(),
     Text('Attendance'),
     Text ('Leave'),
     Text('Profile'),
