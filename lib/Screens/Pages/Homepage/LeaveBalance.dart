@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
-class TextboxEmail extends StatelessWidget {
+class LeaveBalance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      height: 20,
-      color: Colors.green,
+      width: 175,
+      height: 114,
+      decoration: BoxDecoration(
+        
+        borderRadius: BorderRadius.circular(10),
+        color: Color(0xFFFCFCFC),
+      ),
     );
   }
+
 }
