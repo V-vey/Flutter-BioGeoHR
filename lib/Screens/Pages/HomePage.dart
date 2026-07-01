@@ -4,7 +4,7 @@ import 'Homepage/ClockIn.dart';
 import 'Homepage/LeaveBalance.dart';
 import 'Homepage/Payroll.dart';
 
-class Home extends StatelessWidget {
+class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_biogeohr/Screens/Pages/Attendance/Attendance.dart';
 //Reusable
 import 'Screens/Reusable/Header.dart';
 import 'Screens/Reusable/Navigation.dart';
@@ -8,10 +9,10 @@ import 'Screens/Pages/Homepage/LeaveBalance.dart';
 import 'Screens/Pages/Homepage/Payroll.dart';
 
 //Pages
-import 'Screens/Pages/Home.dart';
-import 'Screens/Pages/Attendance.dart';
-import 'Screens/Pages/Leave.dart';
-import 'Screens/Pages/Profile.dart';
+import 'Screens/Pages/HomePage.dart';
+import 'Screens/Pages/AttendancePage.dart';
+import 'Screens/Pages/LeavePage.dart';
+import 'Screens/Pages/ProfilePage.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -23,10 +24,10 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage>{
   int _currentIndex = 0;
   final List<Widget> _widgetList = [
-    Home(),
-    Text('Attendance'),
-    Text ('Leave'),
-    Text('Profile'),
+    HomePage(),
+    AttendancePage(),
+    LeavePage(),
+    ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {
