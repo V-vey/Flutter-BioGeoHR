@@ -42,7 +42,7 @@ class Navigation extends StatelessWidget{
           label: 'Attendance'
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.time_to_leave),
+          icon: Icon(Icons.outbox_rounded),
           label: 'Leave'
           ),
         BottomNavigationBarItem(
