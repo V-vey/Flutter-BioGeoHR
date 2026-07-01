@@ -5,8 +5,8 @@ class LeaveBalance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 175,
-      height: 114,
+      width: 190,
+      height: 150,
       decoration: BoxDecoration(
         
         borderRadius: BorderRadius.circular(10),

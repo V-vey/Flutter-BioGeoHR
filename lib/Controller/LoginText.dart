@@ -13,25 +13,27 @@ class Logintext {
   final TextboxEmail textEmail = TextboxEmail(); // calling for the function
   final TextboxPassword textPassword = TextboxPassword(); 
 
-  late String email = textEmail.getEmail(); // store Data
-  late String password = textPassword.getPassword();
-  
+  // late String email = textEmail.getEmail(); // store Data
+  // late String password = textPassword.getPassword();
+  late bool auth;
   
   
   Future<void> login(String email, String password) async {
+    
     final url = Uri.parse('http://192.168.100.8:8080/api/testing');
 
     final response = await http.post(
       url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: jsonEncode({
         'email': email,
         'password': password,
       }),
     );
-    print(response);
+    if (response.statusCode == 201){
+      Map<bool, dynamic> data = jsonDecode(response.body);
+      bool auth = data[true] as bool;
+      return ;
+    }
   }
   
 }

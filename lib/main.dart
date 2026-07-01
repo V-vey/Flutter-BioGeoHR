@@ -14,6 +14,7 @@ import 'Screens/LoginPage/LoginButton.dart';
 
 //testin widget
 import 'Screens/Reusable/Navigation.dart';
+import 'Controller/testing.dart';
 
 void main(){
   
@@ -23,7 +24,7 @@ void main(){
     ),
     home: 
     Scaffold(
-      backgroundColor: Color.fromARGB(255, 218, 218, 218),
+      backgroundColor: Color(0xFFF2F2F2),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
