@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'Attendance/Attendance.dart';
-import 'Attendance/MonthlyAttendance.dart';
+
+import 'Leave/LeaveBalance.dart';
+import 'Leave/LeaveHistory.dart';
 
 class LeavePage extends StatelessWidget {
 
@@ -11,12 +12,11 @@ class LeavePage extends StatelessWidget {
       Container(
         margin: EdgeInsets.all(15),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: 100,
-              height: 100,
-              color: Colors.black,
-            ) 
+              LeaveBalance(),
+              SizedBox(height: 15),
+              LeaveHistory(),
           ]
         )
       );
