@@ -35,9 +35,10 @@ class _HomepageState extends State<Homepage>{
       backgroundColor: Color.fromARGB(255, 218, 218, 218),
       appBar: const Header(),
       
-      body: Center(
+      body: SingleChildScrollView(
         child: _widgetList[_currentIndex],
       ),
+
       bottomNavigationBar: Navigation(
         myIndex: _currentIndex,
         onTap: (index) {

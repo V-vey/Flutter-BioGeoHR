@@ -13,13 +13,35 @@ class LeaveBalance extends StatelessWidget {
               Container(
                 width: 165,
                 height: 70,
-                color: Color(0xFFFCFCFC),
+                decoration: BoxDecoration( 
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xFFFCFCFC),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withAlpha(20),
+                      blurRadius: 6.0,
+                      spreadRadius: 4.0,
+                      offset: const Offset(0, 2)
+                    )
+                  ]
+                ),
               ),
               SizedBox(width: 15),
               Container(
                 width: 165,
                 height: 70,
-                color: Color(0xFFFCFCFC),
+                decoration: BoxDecoration( 
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xFFFCFCFC),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withAlpha(20),
+                      blurRadius: 6.0,
+                      spreadRadius: 4.0,
+                      offset: const Offset(0, 2)
+                    )
+                  ]
+                ),
               )
             ],
           ),
@@ -30,13 +52,35 @@ class LeaveBalance extends StatelessWidget {
               Container(
                 width: 165,
                 height: 70,
-                color: Color(0xFFFCFCFC),
+                decoration: BoxDecoration( 
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xFFFCFCFC),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withAlpha(20),
+                      blurRadius: 6.0,
+                      spreadRadius: 4.0,
+                      offset: const Offset(0, 2)
+                    )
+                  ]
+                ),
               ),
               SizedBox(width: 15),
               Container(
                 width: 165,
                 height: 70,
-                color: Color(0xFFFCFCFC),
+                decoration: BoxDecoration( 
+                  borderRadius: BorderRadius.circular(10),
+                  color: Color(0xFFFCFCFC),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withAlpha(20),
+                      blurRadius: 6.0,
+                      spreadRadius: 4.0,
+                      offset: const Offset(0, 2)
+                    )
+                  ]
+                ),
               )
             ],
           ),

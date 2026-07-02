@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_biogeohr/Screens/Pages/Homepage/RecentLeave.dart';
 
 import 'Homepage/ClockIn.dart';
 import 'Homepage/LeaveBalance.dart';
 import 'Homepage/Payroll.dart';
+import 'Homepage/RecentAttendance.dart';
+
 
 class HomePage extends StatelessWidget {
 
@@ -26,11 +29,17 @@ class HomePage extends StatelessWidget {
                     margin: EdgeInsets.only(left: 7.5),
                     child: LeaveBalance()
                   )
-                  
                 ]
               )
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 15),
+              child: RecentAttendance()
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 15),
+              child: RecentLeave(),
             )
-            
           ]
         )
       );

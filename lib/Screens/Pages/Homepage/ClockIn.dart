@@ -8,9 +8,16 @@ class ClockIn extends StatelessWidget {
       width: 350,
       height: 80,
       decoration: BoxDecoration(
-        
         borderRadius: BorderRadius.circular(10),
         color: Color(0xFFFCFCFC),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withAlpha(20),
+            blurRadius: 6.0,
+            spreadRadius: 4.0,
+            offset: const Offset(0, 2)
+          )
+        ]
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -63,13 +70,7 @@ class ClockIn extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.access_time), //icon
-                      Text(' 00:00:00',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          color: Color(0xFF3A3A3A),
-                          fontSize: 17.0,
-                        ),
-                      )// Time
+                      Text(' 00:00:00',)// Time
                     ]
                   )
                 )

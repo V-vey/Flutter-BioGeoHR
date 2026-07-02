@@ -10,6 +10,14 @@ class Payroll extends StatelessWidget {
       decoration: BoxDecoration( 
         borderRadius: BorderRadius.circular(10),
         color: Color(0xFFFCFCFC),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withAlpha(20),
+            blurRadius: 6.0,
+            spreadRadius: 4.0,
+            offset: const Offset(0, 2)
+          )
+        ]
       ),
     );
   }

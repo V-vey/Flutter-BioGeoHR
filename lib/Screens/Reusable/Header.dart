@@ -9,27 +9,43 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyActions: false,
-      title: const BioGeoHRLogo(textSize: 24),
-      actions: [
-        TextButton(
-          onPressed: () {
-            print('You Got Log Out');
-          },
-          child: const Text(
-            'Log-out',
-            textAlign: TextAlign.right,
-            style: TextStyle(
-              fontFamily: 'Roboto',
-              fontSize: 15,
-              decoration: TextDecoration.underline,
-              decorationColor: Color(0xFFEC6668),
-              color: Color(0xFFEC6668),
+    return
+      DecoratedBox(
+        decoration: BoxDecoration(
+          color: const Color(0xFFFCFCFC), // Matches your app bar background
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(20), // Subtle light gray shadow
+              blurRadius: 6.0,                  // Softness of the shadow line
+              spreadRadius: 4.0,                 // Distance it extends
+              offset: const Offset(0, 2),        // Moves shadow slightly downwards
+            ),
+          ],
+        ), 
+        child: AppBar(
+        automaticallyImplyActions: false,
+        scrolledUnderElevation: 0.0,             // Prevents elevation tint change on scroll
+        backgroundColor: Color(0xFFFCFCFC),   // Stops the Material 3 blend effect
+        title: const BioGeoHRLogo(textSize: 24),
+        actions: [
+          TextButton(
+            onPressed: () {
+              print('You Got Log Out');
+            },
+            child: const Text(
+              'Log-out',
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                fontSize: 15,
+                decoration: TextDecoration.underline,
+                decorationColor: Color(0xFFEC6668),
+                color: Color(0xFFEC6668),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      )
     );
   }
 }
