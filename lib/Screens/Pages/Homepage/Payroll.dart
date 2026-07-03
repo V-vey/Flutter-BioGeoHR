@@ -19,6 +19,23 @@ class Payroll extends StatelessWidget {
           )
         ]
       ),
+      
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.all(5),
+            child: Text('Payroll',
+              style: TextStyle(
+                fontFamily: 'Roboto',
+                color: Color(0xFF6675EC),
+                fontSize: 17.0,
+                fontWeight: FontWeight.bold,  
+              ),
+            ),
+          ),
+          Container(width: 170, height: 1, color: Color(0xFFE0E0E0))
+        ],
+      )
     );
   }
 }
