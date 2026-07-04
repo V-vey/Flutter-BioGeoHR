@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'Cont/RecentLeaveItem.dart';
+
 class RecentLeave extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 350,
-      height: 190,
+      height: 130,
       decoration: BoxDecoration( 
         borderRadius: BorderRadius.circular(10),
         color: Color(0xFFFCFCFC),
@@ -23,7 +25,7 @@ class RecentLeave extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.all(5),
-            child:Text('Recent Leave',
+            child:Text('Recent Attendance',
               style: TextStyle(
                 fontFamily: 'Roboto',
                 color: Color(0xFF6675EC),
@@ -33,6 +35,8 @@ class RecentLeave extends StatelessWidget {
             ),
           ),
           Container(width: 350, height: 1, color: Color(0xFFE0E0E0)),
+          SizedBox(height: 5),
+          RecentLeaveItem()
         ],
       ),
     );

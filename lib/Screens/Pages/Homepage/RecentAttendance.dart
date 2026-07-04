@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../Reusable/AttendanceItem.dart';
+import 'Cont/RecentAttendanceItem.dart';
 
 class RecentAttendance extends StatelessWidget {
 
@@ -8,7 +8,7 @@ class RecentAttendance extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 350,
-      height: 170,
+      height: 130,
       decoration: BoxDecoration( 
         borderRadius: BorderRadius.circular(10),
         color: Color(0xFFFCFCFC),
@@ -35,8 +35,8 @@ class RecentAttendance extends StatelessWidget {
             ),
           ),
           Container(width: 350, height: 1, color: Color(0xFFE0E0E0)),
-          SizedBox(height: 15),
-          AttendanceItem()
+          SizedBox(height: 5),
+          RecentAttendanceItem()
         ],
       ),
     );
