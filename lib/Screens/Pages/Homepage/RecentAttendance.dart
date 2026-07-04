@@ -8,7 +8,7 @@ class RecentAttendance extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 350,
-      height: 130,
+      height: 153,
       decoration: BoxDecoration( 
         borderRadius: BorderRadius.circular(10),
         color: Color(0xFFFCFCFC),
@@ -24,12 +24,12 @@ class RecentAttendance extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(5),
+            padding: EdgeInsets.all(10),
             child:Text('Recent Attendance',
               style: TextStyle(
                 fontFamily: 'Roboto',
                 color: Color(0xFF6675EC),
-                fontSize: 17.0,
+                fontSize: 18.0,
                 fontWeight: FontWeight.bold,  
               ),
             ),

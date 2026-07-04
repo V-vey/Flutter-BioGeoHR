@@ -5,19 +5,9 @@ class RecentAttendanceItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 350,
-      height: 90,
       decoration: BoxDecoration( 
         borderRadius: BorderRadius.circular(7.5),
         color: Color(0xFFFCFCFC),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Color(0x25000000),
-        //     blurRadius: 3,
-        //     spreadRadius: 1.5,
-        //     offset: const Offset(0, 0)
-        //   )
-        // ]
       ),
       child: Container(
         child: Column(
@@ -35,7 +25,8 @@ class RecentAttendanceItem extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight(450),
-                      fontSize: 14
+                      fontSize: 16,
+                      color: Color(0xFF3A3A3A)
                     ),
                   ), 
 
@@ -47,7 +38,8 @@ class RecentAttendanceItem extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight(450),
-                            fontSize: 14
+                            fontSize: 16,
+                            color: Color(0xFF3A3A3A)
                           ),
                         ), 
                         SizedBox(width: 5),
@@ -75,7 +67,7 @@ class RecentAttendanceItem extends StatelessWidget {
 
             //Date and Clock in
             Container(
-              padding: EdgeInsets.only(top: 5, bottom: 5, right: 10, left: 10),
+              padding: EdgeInsets.only(top: 8, bottom: 8, right: 10, left: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

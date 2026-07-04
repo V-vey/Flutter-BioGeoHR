@@ -5,19 +5,11 @@ class RecentLeaveItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 350,
-      height: 90,
+      // width: 350,
+      // height: 120,
       decoration: BoxDecoration( 
         borderRadius: BorderRadius.circular(7.5),
         color: Color(0xFFFCFCFC),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Color(0x25000000),
-        //     blurRadius: 3,
-        //     spreadRadius: 1.5,
-        //     offset: const Offset(0, 0)
-        //   )
-        // ]
       ),
       child: Container(
         child: Column(
@@ -30,12 +22,13 @@ class RecentLeaveItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
 
-                  //Location
-                  Text('Office',
+                  //Reason
+                  Text('Sick Leave',
                     style: TextStyle(
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight(450),
-                      fontSize: 14
+                      fontSize: 16,
+                      color: Color(0xFF3A3A3A)
                     ),
                   ), 
 
@@ -43,11 +36,12 @@ class RecentLeaveItem extends StatelessWidget {
                   Container(
                     child: Row(
                       children: [
-                        Text('On-Time', //Status
+                        Text('Approved', //Status
                           style: TextStyle(
                             fontFamily: 'Roboto',
-                            fontWeight: FontWeight(450),
-                            fontSize: 14
+                            fontWeight: FontWeight(490),
+                            fontSize: 16,
+                            color: Color(0xFF3A3A3A)
                           ),
                         ), 
                         SizedBox(width: 5),
@@ -73,18 +67,18 @@ class RecentLeaveItem extends StatelessWidget {
               color: Color(0xFFE0E0E0)
             ),
 
-            //Date and Clock in
+            //Starting Date and Ending Date
             Container(
-              padding: EdgeInsets.only(top: 5, bottom: 5, right: 10, left: 10),
+              padding: EdgeInsets.only(top: 8, bottom: 8, right: 10, left: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                 
-                //Date
+                //Starting Date
                 Container(
                   child: Row(
                     children: [
-                      Text('Date: ',
+                      Text('Start: ',
                         style: TextStyle(
                           fontFamily: 'Roboto',
                           fontSize: 15,
@@ -93,7 +87,7 @@ class RecentLeaveItem extends StatelessWidget {
                       ),
 
                       //Date Value
-                      Text('April 7, 2026',
+                      Text('2026-07-04',
                         style: TextStyle(
                           fontFamily: 'Roboto',
                           fontSize: 15,
@@ -104,11 +98,11 @@ class RecentLeaveItem extends StatelessWidget {
                   )
                 ),
 
-                //Clock in
+                //Ending Date
                 Container(
                   child: Row(
                     children: [
-                      Text('Clock In: ',
+                      Text('End: ',
                         style: TextStyle(
                           fontFamily: 'Roboto',
                           fontSize: 15,
@@ -117,7 +111,7 @@ class RecentLeaveItem extends StatelessWidget {
                       ),
 
                       //Value
-                      Text('7:00 AM',
+                      Text('2026-07-05',
                         style: TextStyle(
                           fontFamily: 'Roboto',
                           fontSize: 15,
@@ -131,13 +125,37 @@ class RecentLeaveItem extends StatelessWidget {
               ],)
             ),
 
-            //Duration and Clock out
+            //Date Submitted and Duration 
             Container(
-              padding: EdgeInsets.only(bottom: 5, right: 10, left: 10),
+              padding: EdgeInsets.only(bottom: 8, right: 10, left: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                 
+                //Date Submitted
+                Container(
+                  child: Row(
+                    children: [
+                      Text('Submitted: ',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 15,
+                          color: Color(0x703A3A3A),
+                        ),
+                      ),
+
+                      //Date Value
+                      Text('2026-07-03',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 15,
+                          color: Color(0xFF3A3A3A),
+                        ),
+                      )
+                    ],
+                  )
+                ),
+
                 //Duration
                 Container(
                   child: Row(
@@ -150,32 +168,8 @@ class RecentLeaveItem extends StatelessWidget {
                         ),
                       ),
 
-                      //Date Value
-                      Text('8 Hours',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 15,
-                          color: Color(0xFF3A3A3A),
-                        ),
-                      )
-                    ],
-                  )
-                ),
-
-                //Clock out
-                Container(
-                  child: Row(
-                    children: [
-                      Text('Clock Out: ',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 15,
-                          color: Color(0x703A3A3A),
-                        ),
-                      ),
-
                       //Value
-                      Text('3:00 PM',
+                      Text('1 Day',
                         style: TextStyle(
                           fontFamily: 'Roboto',
                           fontSize: 15,
@@ -187,6 +181,69 @@ class RecentLeaveItem extends StatelessWidget {
                 ),
 
               ],)
+            ),
+
+            //line
+            Container(
+              width: 350,
+              height: 1,
+              color: Color(0xFFE0E0E0)
+            ),
+            
+            Container(
+              padding: EdgeInsets.only(top: 10, right: 10, left: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    child: Row(
+                      children: [
+
+                      //Verified Date
+                        Text('Approved: ',
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontSize: 15,
+                            color: Color(0x703A3A3A),
+                          ),
+                        ),
+
+                        //Value
+                        Text('2026-07-03',
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontSize: 15,
+                            color: Color(0xFF3A3A3A),
+                          ),
+                        )
+                      ],
+                    )
+                  ),
+
+                  Container(
+                    height: 25,
+                    width: 100,
+
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0,
+                        backgroundColor: Color(0xFF2AAF56)
+                        
+                      ),
+                      onPressed: () async{}, 
+                  
+                      child: Text("View",
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 15,
+                          color: Colors.white
+                        ),
+                      ),
+                    )
+                  )
+                  
+                ],
+              ),
             )
 
           ],

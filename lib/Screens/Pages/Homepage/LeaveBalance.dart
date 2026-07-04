@@ -30,7 +30,7 @@ class LeaveBalance extends StatelessWidget {
             style: TextStyle(
               fontFamily: 'Roboto',
               color: Color(0xFF6675EC),
-              fontSize: 17.0,
+              fontSize: 18.0,
               fontWeight: FontWeight.bold,  
               ),
             ),

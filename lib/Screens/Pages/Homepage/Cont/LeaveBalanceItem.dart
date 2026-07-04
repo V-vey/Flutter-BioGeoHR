@@ -14,6 +14,8 @@ class LeaveBalanceItem extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+            //Annual Leave
             children: [
               Text('Annual Leave:',
                 style: TextStyle(
@@ -22,6 +24,8 @@ class LeaveBalanceItem extends StatelessWidget {
                   fontSize: 15.0,
                 ),
               ),
+
+              //Value
               Text('10',
                 style: TextStyle(
                   fontFamily: 'Roboto',
@@ -34,6 +38,8 @@ class LeaveBalanceItem extends StatelessWidget {
           SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+            //Sick Leave
             children: [
               Text('Sick Leave:',
                 style: TextStyle(
@@ -42,6 +48,7 @@ class LeaveBalanceItem extends StatelessWidget {
                   fontSize: 15.0,
                 ),
               ),
+              //Value
               Text('10',
                 style: TextStyle(
                   fontFamily: 'Roboto',
@@ -54,6 +61,8 @@ class LeaveBalanceItem extends StatelessWidget {
           SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+            //Paternity Leave
             children: [
               Text('Paternity Leave:',
                 style: TextStyle(
@@ -62,6 +71,8 @@ class LeaveBalanceItem extends StatelessWidget {
                   fontSize: 15.0,
                 ),
               ),
+
+              //Value
               Text('10',
                 style: TextStyle(
                   fontFamily: 'Roboto',
@@ -74,6 +85,8 @@ class LeaveBalanceItem extends StatelessWidget {
           SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+            //Unpaid Leave
             children: [
               Text('Unpaid Leave:',
                 style: TextStyle(
@@ -82,6 +95,8 @@ class LeaveBalanceItem extends StatelessWidget {
                   fontSize: 15.0,
                 ),
               ),
+
+              //Value
               Text('10',
                 style: TextStyle(
                   fontFamily: 'Roboto',

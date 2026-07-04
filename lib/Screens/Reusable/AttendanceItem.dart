@@ -10,14 +10,14 @@ class AttendanceItem extends StatelessWidget {
       decoration: BoxDecoration( 
         borderRadius: BorderRadius.circular(7.5),
         color: Color(0xFFFCFCFC),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Color(0x25000000),
-        //     blurRadius: 3,
-        //     spreadRadius: 1.5,
-        //     offset: const Offset(0, 0)
-        //   )
-        // ]
+        boxShadow: [
+          BoxShadow(
+            color: Color(0x25000000),
+            blurRadius: 3,
+            spreadRadius: 1.5,
+            offset: const Offset(0, 0)
+          )
+        ]
       ),
       child: Container(
         child: Column(

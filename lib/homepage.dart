@@ -6,7 +6,7 @@ import 'Screens/Reusable/Navigation.dart';
 
 //Homepage
 import 'Screens/Pages/Homepage/LeaveBalance.dart';
-import 'Screens/Pages/Homepage/Payroll.dart';
+import 'Screens/Pages/Homepage/TotalLate.dart';
 
 //Pages
 import 'Screens/Pages/HomePage.dart';

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_biogeohr/Screens/Pages/Homepage/Cont/LateCircle.dart';
 
-class Payroll extends StatelessWidget {
+import 'Cont/LateCircle.dart';
+
+class TotalLate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +27,20 @@ class Payroll extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.all(5),
-            child: Text('Payroll',
+            child: Text('Total Late',
               style: TextStyle(
                 fontFamily: 'Roboto',
                 color: Color(0xFF6675EC),
-                fontSize: 17.0,
+                fontSize: 18.0,
                 fontWeight: FontWeight.bold,  
               ),
             ),
           ),
-          Container(width: 170, height: 1, color: Color(0xFFE0E0E0))
+          Container(width: 170, height: 1, color: Color(0xFFE0E0E0)),
+          SizedBox(height: 10,),
+          LateCircle()
+          
+          
         ],
       )
     );

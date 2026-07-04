@@ -40,9 +40,9 @@ class Loginbutton extends StatelessWidget {
           }, 
         child: Text('Log-in',
           style: TextStyle(
-          fontFamily: 'Roboto',
-          fontSize: 16,
-          color: Colors.white
+            fontFamily: 'Roboto',
+            fontSize: 16,
+            color: Colors.white
           ),
         ),
       ),
