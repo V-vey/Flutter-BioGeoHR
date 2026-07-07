@@ -20,7 +20,7 @@ class Logintext {
   
   Future<void> login(String email, String password) async {
     
-    final url = Uri.parse('http://192.168.100.8:8080/api/testing');
+    final url = Uri.parse('http://192.168.254.104:8080/api/testing');
 
     final response = await http.post(
       url,

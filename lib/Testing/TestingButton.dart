@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'TestingScreen.dart';
+class TestingButton extends StatelessWidget {
+  
+  @override
+  Widget build(BuildContext context){
+    
+  var button = 
+  
+    SizedBox(
+      width: 220,
+      height: 40,
+      child: 
+      ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Color(0xFF2AAF56), // Sets the background color
+          foregroundColor: Colors.white, // Sets the text and icon color
+        ),
+          onPressed: () async{
+            
+            
+            Navigator.push(
+            context,
+              MaterialPageRoute(
+                builder: (context) => TestingScreen(),
+              ),
+            );
+          }, 
+        child: Text('Testing',
+          style: TextStyle(
+            fontFamily: 'Roboto',
+            fontSize: 16,
+            color: Colors.white
+          ),
+        ),
+      ),
+    )
+  ;
+  return button;
+  }
+}

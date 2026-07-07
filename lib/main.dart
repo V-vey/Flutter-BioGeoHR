@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_biogeohr/Screens/LoginPage/TextBoxPassword.dart';
-import 'screens/TestingScreen.dart';
 import 'Service/employee_service.dart';
 
 //Reusable
@@ -15,6 +14,7 @@ import 'Screens/LoginPage/LoginButton.dart';
 //testin widget
 import 'Screens/Reusable/Navigation.dart';
 import 'Controller/testing.dart';
+import 'Testing/TestingButton.dart';
 
 void main(){
   
@@ -36,6 +36,9 @@ void main(){
               TextboxPassword(),
               SizedBox(height: 13),
               Loginbutton(),
+              SizedBox(height: 13),
+              TestingButton(),     
+          
           ],
         ),
       ),

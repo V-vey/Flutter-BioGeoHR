@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Cont/Time.dart';
+
 class ClockIn extends StatelessWidget {
 
   @override
@@ -70,7 +72,8 @@ class ClockIn extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.access_time), //icon
-                      Text(' 00:00:00',)// Time
+                      Text(' '),
+                      // Time() // Time
                     ]
                   )
                 )
