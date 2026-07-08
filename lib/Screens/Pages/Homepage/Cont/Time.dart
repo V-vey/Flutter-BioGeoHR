@@ -1,21 +1,16 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_biogeohr/Service/Stopwatch.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_biogeohr/Service/Stopwatch.dart';
 
-// class Time extends StatefulWidget {
+class Time{
 
-//   @override
-//   State<Time> createState() => _TimeState();
-// }
-//   stopwatchService = StopwatchService();
+  String formatDuration(Duration duration){
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
 
-// class _TimeState extends State<Time> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       child: Text(
-//         formatTime(stopwatchService.elapsed),
+    final hours = twoDigits(duration.inHours);
+    final minutes = twoDigits(duration.inMinutes.remainder(60));
+    final seconds = twoDigits(duration.inSeconds.remainder(60));
 
-//       )
-//     );
-//   }
-// }
+    return "$hours:$minutes:$seconds";
+  }
+
+}

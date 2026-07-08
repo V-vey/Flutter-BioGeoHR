@@ -36,32 +36,38 @@ class Loginbutton extends StatelessWidget {
           foregroundColor: Colors.white, // Sets the text and icon color
         ),
           onPressed: () async{
-            bool isSuccessful = await logintext.login(
-              emailController.text, 
-              passwordController.text
-            );
-            print("Login successful: $isSuccessful");
+            
+            //uncomment to use login function
 
-            if (isSuccessful) {
-              // Login successful, navigate to the next screen
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Homepage(),
-                ),
-              );
-            } else {
-              // Login failed, show an error message
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Login failed. Please check your credentials.')),
-              );
-            }
-            // Navigator.push(
-            // context,
-            //   MaterialPageRoute(
-            //     builder: (context) => Homepage(),
-            //   ),
+            // bool isSuccessful = await logintext.login(
+            //   emailController.text, 
+            //   passwordController.text
             // );
+            // print("Login successful: $isSuccessful");
+
+            // if (isSuccessful) {
+            //   // Login successful, navigate to the next screen
+            //   Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //       builder: (context) => Homepage(),
+            //     ),
+            //   );
+            // } else {
+            //   // Login failed, show an error message
+            //   ScaffoldMessenger.of(context).showSnackBar(
+            //     SnackBar(content: Text('Login failed. Please check your credentials.')),
+            //   );
+            // }
+
+            //just to access easily
+            Navigator.push(
+            context,
+              MaterialPageRoute(
+                builder: (context) => Homepage(),
+              ),
+            );
+
           }, 
         child: Text('Log-in',
           style: TextStyle(

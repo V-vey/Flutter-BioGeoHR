@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
+import 'package:flutter_biogeohr/Service/Stopwatch.dart';
 import 'Cont/Time.dart';
 
-class ClockIn extends StatelessWidget {
+class ClockIn extends StatefulWidget {
+  
+  @override
+  State<ClockIn> createState() => _ClockInState();
+}
+
+class _ClockInState extends State<ClockIn> {
+  final Stopwatch stopwatch = Stopwatch();
+
+  final Time time = Time();
+
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +84,8 @@ class ClockIn extends StatelessWidget {
                   child: Row(
                     children: [
                       Icon(Icons.access_time), //icon
-                      Text(' '),
-                      // Time() // Time
+                      Text(time.formatDuration(stopwatch.elapsed)), //time
+                      
                     ]
                   )
                 )
@@ -86,6 +98,11 @@ class ClockIn extends StatelessWidget {
             padding: EdgeInsets.only(right: 10, top: 15, bottom: 15),
             child: 
               IconButton.filled(onPressed: (){
+                if (stopwatch.isRunning) {
+                  stopwatch.stop();
+                }else {
+                  stopwatch.start();
+                }
               }, 
               icon: Icon(
                 Icons.fingerprint,

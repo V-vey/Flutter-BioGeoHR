@@ -4,8 +4,18 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+
 class Logintext {
-  
+
+
+  bool verifyData(data){
+    bool auth = false;
+    if (data["authenticated"] == true) {
+      auth = true;
+    }
+    return auth;
+    
+  }  
   Future<bool> login(String email, String password) async {
 
     final url = Uri.parse('http://192.168.254.104:8080/api/login');
@@ -27,8 +37,8 @@ class Logintext {
     print("Server Response Body: ${response.body}");  
 
     if (response.statusCode == 201) {
-      return true;
-      
+      bool isAuthenticated = verifyData(jsonDecode(response.body));
+      return isAuthenticated;
     }
     print(email + password);
     return false;
