@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_biogeohr/Screens/LoginPage/TextBoxPassword.dart';
 import 'Service/employee_service.dart';
 
+//controller
+import 'Controller/LoginText.dart';
+
 //Reusable
 import 'Screens/Reusable/Header.dart';
 
@@ -16,8 +19,12 @@ import 'Screens/Reusable/Navigation.dart';
 import 'Controller/testing.dart';
 import 'Testing/TestingButton.dart';
 
+final TextEditingController _emailController = TextEditingController();
+final TextEditingController _passwordController = TextEditingController();
+final Logintext logintext = Logintext();
+
 void main(){
-  
+
   runApp(MaterialApp(
     theme: ThemeData(
       fontFamily: 'Roboto',
@@ -31,11 +38,15 @@ void main(){
           children: [ //Login Screen
               BioGeoHRLogo(textSize: 48,),
               SizedBox(height: 13),
-              TextboxEmail(),
+              TextboxEmail(controller: _emailController),
               SizedBox(height: 13),
-              TextboxPassword(),
+              TextboxPassword(controller: _passwordController),
               SizedBox(height: 13),
-              Loginbutton(),
+              Loginbutton(
+                emailController: _emailController,
+                passwordController: _passwordController,
+                logintext: logintext,
+              ),
               SizedBox(height: 13),
               TestingButton(),     
           

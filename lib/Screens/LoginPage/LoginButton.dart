@@ -9,11 +9,18 @@ import '../LoginPage/TextBoxPassword.dart';
 import '../../Controller/LoginText.dart';
 
 class Loginbutton extends StatelessWidget {
-  final textEmail = TextboxEmail(); // calling for the function
-  final textPassword = TextboxPassword();
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+  final Logintext logintext;
 
-  final login = Logintext();
-  
+  Loginbutton({
+    super.key,
+    required this.emailController,
+    required this.passwordController, 
+    required this.logintext, 
+  });
+
+
   @override
   Widget build(BuildContext context){
     
@@ -29,14 +36,32 @@ class Loginbutton extends StatelessWidget {
           foregroundColor: Colors.white, // Sets the text and icon color
         ),
           onPressed: () async{
-            
-            
-            Navigator.push(
-            context,
-              MaterialPageRoute(
-                builder: (context) => Homepage(),
-              ),
+            bool isSuccessful = await logintext.login(
+              emailController.text, 
+              passwordController.text
             );
+            print("Login successful: $isSuccessful");
+
+            if (isSuccessful) {
+              // Login successful, navigate to the next screen
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Homepage(),
+                ),
+              );
+            } else {
+              // Login failed, show an error message
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Login failed. Please check your credentials.')),
+              );
+            }
+            // Navigator.push(
+            // context,
+            //   MaterialPageRoute(
+            //     builder: (context) => Homepage(),
+            //   ),
+            // );
           }, 
         child: Text('Log-in',
           style: TextStyle(

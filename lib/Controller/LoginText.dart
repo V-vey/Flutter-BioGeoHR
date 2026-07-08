@@ -4,36 +4,34 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-// access the Textbox
-import '../Screens/LoginPage/TextBoxEmail.dart';
-import '../Screens/LoginPage/TextBoxPassword.dart';
-
-
 class Logintext {
-  final TextboxEmail textEmail = TextboxEmail(); // calling for the function
-  final TextboxPassword textPassword = TextboxPassword(); 
+  
+  Future<bool> login(String email, String password) async {
 
-  // late String email = textEmail.getEmail(); // store Data
-  // late String password = textPassword.getPassword();
-  late bool auth;
-  
-  
-  Future<void> login(String email, String password) async {
+    final url = Uri.parse('http://192.168.254.104:8080/api/login');
     
-    final url = Uri.parse('http://192.168.254.104:8080/api/testing');
-
     final response = await http.post(
       url,
+      headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
       body: jsonEncode({
-        'email': email,
-        'password': password,
+        "email": email,
+        "password": password,
       }),
     );
-    if (response.statusCode == 201){
-      Map<bool, dynamic> data = jsonDecode(response.body);
-      bool auth = data[true] as bool;
-      return ;
+
+    // Debug print to see what the server responds with
+    print("Server Response Status Code: ${response.statusCode}");
+    print("Server Response Body: ${response.body}");  
+
+    if (response.statusCode == 201) {
+      return true;
+      
     }
+    print(email + password);
+    return false;
   }
   
 }

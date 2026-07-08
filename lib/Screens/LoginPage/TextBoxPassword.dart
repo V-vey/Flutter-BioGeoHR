@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
 
 class TextboxPassword extends StatefulWidget {
+  final TextEditingController controller;
+
+  TextboxPassword({
+    super.key, 
+    required this.controller
+  });
+
   @override
   State<TextboxPassword> createState() => _TextboxPasswordState();
 }
 
 class _TextboxPasswordState extends State<TextboxPassword> {
-  // const TextBoxEmail({super.key});
-  final TextEditingController passwords = TextEditingController();
-
-  String password = '';
-
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is destroyed to save memory
-    passwords.dispose();
-    super.dispose();
-  }
-
-  String getEmail() {
-    password = passwords.text;
-    return password;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +30,10 @@ class _TextboxPasswordState extends State<TextboxPassword> {
         )
       ),
       child: TextFormField(
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.visiblePassword,
         enableSuggestions: false,
         autocorrect: false,
-        controller: passwords,
+        controller: widget.controller,
         textAlign: TextAlign.center,
         textAlignVertical: TextAlignVertical.center,
         style: TextStyle(

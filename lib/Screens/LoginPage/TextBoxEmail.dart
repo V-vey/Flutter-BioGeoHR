@@ -1,27 +1,20 @@
 import 'package:flutter/material.dart';
 
 class TextboxEmail extends StatefulWidget {
+  final TextEditingController controller;
+
+  const TextboxEmail({
+    super.key,
+    required this.controller,
+  });
+
   @override
   State<TextboxEmail> createState() => _TextboxEmailState();
 }
 
 class _TextboxEmailState extends State<TextboxEmail> {
   // const TextBoxEmail({super.key});
-  final TextEditingController emails = TextEditingController();
 
-  String email = '';
-
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is destroyed to save memory
-    emails.dispose();
-    super.dispose();
-  }
-
-  String getEmail() {
-    email = emails.text;
-    return email;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +35,7 @@ class _TextboxEmailState extends State<TextboxEmail> {
         keyboardType: TextInputType.emailAddress,
         enableSuggestions: false,
         autocorrect: false,
-        controller: emails,
+        controller: widget.controller,
         textAlign: TextAlign.center,
         textAlignVertical: TextAlignVertical.center,
         style: TextStyle(
