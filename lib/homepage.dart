@@ -5,14 +5,14 @@ import 'Screens/Reusable/Header.dart';
 import 'Screens/Reusable/Navigation.dart';
 
 //Homepage
-import 'Screens/Pages/Homepage/LeaveBalance.dart';
-import 'Screens/Pages/Homepage/TotalLate.dart';
+import 'Screens/Pages/Homepage/Container/LeaveBalance/LeaveBalance.dart';
+import 'Screens/Pages/Homepage/Container/TotalLate/TotalLate.dart';
 
 //Pages
-import 'Screens/Pages/HomePage.dart';
-import 'Screens/Pages/AttendancePage.dart';
-import 'Screens/Pages/LeavePage.dart';
-import 'Screens/Pages/ProfilePage.dart';
+import 'Screens/Pages/Homepage/HomePageMain.dart';
+import 'Screens/Pages/Attendance/AttendancePageMain.dart';
+import 'Screens/Pages/Leave/LeavePageMain.dart';
+import 'Screens/Pages/Profile/ProfilePageMain.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -24,10 +24,10 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage>{
   int _currentIndex = 0;
   final List<Widget> _widgetList = [
-    HomePage(),
-    AttendancePage(),
-    LeavePage(),
-    ProfilePage(),
+    HomePageMain(),
+    AttendancePageMain(),
+    LeavePageMain(),
+    ProfilePageMain(),
   ];
   @override
   Widget build(BuildContext context) {

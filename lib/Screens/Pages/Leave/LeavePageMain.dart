@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 
-import 'Leave/LeaveBalance.dart';
-import 'Leave/LeaveHistory.dart';
+import 'LeaveBalance.dart';
+import 'LeaveHistory.dart';
 
-class LeavePage extends StatelessWidget {
+class LeavePageMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {

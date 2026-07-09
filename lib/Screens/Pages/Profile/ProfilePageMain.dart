@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'Attendance/Attendance.dart';
-import 'Attendance/MonthlyAttendance.dart';
+import '../Attendance/Attendance.dart';
+import '../Attendance/MonthlyAttendance.dart';
 
-class AttendancePage extends StatelessWidget {
+class ProfilePageMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +12,11 @@ class AttendancePage extends StatelessWidget {
         margin: EdgeInsets.all(15),
         child: Column(
           children: [
-            MonthlyAttendance(),
-            SizedBox(height: 15),
-            Attendance(),
-            
-            
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.green,
+            ) 
           ]
         )
       );

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_biogeohr/Screens/Pages/Homepage/Container/TotalLate/LateCircle.dart';
 
-import 'Cont/RecentAttendanceItem.dart';
+import 'LateCircle.dart';
 
-class RecentAttendance extends StatelessWidget {
+class TotalLate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 350,
-      height: 153,
+      width: 170,
+      height: 155,
       decoration: BoxDecoration( 
         borderRadius: BorderRadius.circular(10),
         color: Color(0xFFFCFCFC),
@@ -21,11 +22,12 @@ class RecentAttendance extends StatelessWidget {
           )
         ]
       ),
+      
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(10),
-            child:Text('Recent Attendance',
+            padding: EdgeInsets.all(5),
+            child: Text('Total Late',
               style: TextStyle(
                 fontFamily: 'Roboto',
                 color: Color(0xFF6675EC),
@@ -34,11 +36,13 @@ class RecentAttendance extends StatelessWidget {
               ),
             ),
           ),
-          Container(width: 350, height: 1, color: Color(0xFFE0E0E0)),
-          SizedBox(height: 5),
-          RecentAttendanceItem()
+          Container(width: 170, height: 1, color: Color(0xFFE0E0E0)),
+          SizedBox(height: 10,),
+          LateCircle()
+          
+          
         ],
-      ),
+      )
     );
   }
 }

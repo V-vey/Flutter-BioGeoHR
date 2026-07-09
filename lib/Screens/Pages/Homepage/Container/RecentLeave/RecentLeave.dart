@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Cont/RecentLeaveItem.dart';
+import 'RecentLeaveItem.dart';
 
 class RecentLeave extends StatelessWidget {
 

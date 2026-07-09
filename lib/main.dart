@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_biogeohr/Screens/LoginPage/TextBoxPassword.dart';
-import 'Service/employee_service.dart';
 
 //controller
 import 'Controller/LoginText.dart';
-
-//Reusable
-import 'Screens/Reusable/Header.dart';
 
 //Login Page
 import 'Screens/Reusable/TextBioGeoHR.dart';
@@ -15,8 +11,6 @@ import 'Screens/LoginPage/TextBoxPassword.dart';
 import 'Screens/LoginPage/LoginButton.dart';
 
 //testin widget
-import 'Screens/Reusable/Navigation.dart';
-import 'Controller/testing.dart';
 import 'Testing/TestingButton.dart';
 
 final TextEditingController _emailController = TextEditingController();
@@ -35,21 +29,18 @@ void main(){
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          spacing: 13,
           children: [ //Login Screen
-              BioGeoHRLogo(textSize: 48,),
-              SizedBox(height: 13),
-              TextboxEmail(controller: _emailController),
-              SizedBox(height: 13),
+              BioGeoHRLogo(textSize: 48,),  
+              TextboxEmail(controller: _emailController), 
               TextboxPassword(controller: _passwordController),
-              SizedBox(height: 13),
               Loginbutton(
                 emailController: _emailController,
                 passwordController: _passwordController,
                 logintext: logintext,
               ),
-              SizedBox(height: 13),
               TestingButton(),     
-          
+
           ],
         ),
       ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter_biogeohr/Service/Stopwatch.dart';
-import 'Cont/Time.dart';
+import 'Time.dart';
 
+bool isRunning = false;
+final Stopwatch _timerController = Stopwatch();
 class ClockIn extends StatefulWidget {
   
   @override
@@ -12,9 +13,6 @@ class ClockIn extends StatefulWidget {
 
 class _ClockInState extends State<ClockIn> {
   final Stopwatch stopwatch = Stopwatch();
-
-  final Time time = Time();
-
 
   @override
   Widget build(BuildContext context) {
@@ -84,8 +82,10 @@ class _ClockInState extends State<ClockIn> {
                   child: Row(
                     children: [
                       Icon(Icons.access_time), //icon
-                      Text(time.formatDuration(stopwatch.elapsed)), //time
-                      
+                      Time(
+                        isRunning: isRunning,
+                        controller: stopwatch,
+                      ) //time
                     ]
                   )
                 )
@@ -98,11 +98,14 @@ class _ClockInState extends State<ClockIn> {
             padding: EdgeInsets.only(right: 10, top: 15, bottom: 15),
             child: 
               IconButton.filled(onPressed: (){
-                if (stopwatch.isRunning) {
-                  stopwatch.stop();
-                }else {
-                  stopwatch.start();
+                if (isRunning == false){
+                  isRunning = true;
+                  print("widget.isRunning: ${isRunning}");
+                } else {
+                  isRunning = false;
+                  print("widget.isRunning: ${isRunning}");
                 }
+
               }, 
               icon: Icon(
                 Icons.fingerprint,

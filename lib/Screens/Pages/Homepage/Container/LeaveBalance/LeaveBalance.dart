@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_biogeohr/Screens/Pages/Homepage/Cont/LateCircle.dart';
 
-import 'Cont/LateCircle.dart';
-
-class TotalLate extends StatelessWidget {
+import 'LeaveBalanceItem.dart';
+class LeaveBalance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 170,
+      width: 167,
       height: 155,
-      decoration: BoxDecoration( 
+      decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Color(0xFFFCFCFC),
         boxShadow: [
@@ -22,27 +20,30 @@ class TotalLate extends StatelessWidget {
           )
         ]
       ),
-      
       child: Column(
         children: [
           Container(
             padding: EdgeInsets.all(5),
-            child: Text('Total Late',
-              style: TextStyle(
-                fontFamily: 'Roboto',
-                color: Color(0xFF6675EC),
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,  
+            child:
+            Text(
+            'Leave',
+            style: TextStyle(
+              fontFamily: 'Roboto',
+              color: Color(0xFF6675EC),
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,  
               ),
             ),
           ),
-          Container(width: 170, height: 1, color: Color(0xFFE0E0E0)),
-          SizedBox(height: 10,),
-          LateCircle()
-          
-          
+          Container(
+            height: 1,
+            width: 167,
+            color: Color(0xFFE0E0E0),
+            ),
+          LeaveBalanceItem()
         ],
-      )
+      ),
     );
   }
+
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'TestingScreen.dart';
+
+import '../homepage.dart';
 class TestingButton extends StatelessWidget {
   
   @override
@@ -19,10 +21,11 @@ class TestingButton extends StatelessWidget {
           onPressed: () async{
             
             
+            //just to access easily
             Navigator.push(
             context,
               MaterialPageRoute(
-                builder: (context) => TestingScreen(),
+                builder: (context) => Homepage(),
               ),
             );
           }, 
