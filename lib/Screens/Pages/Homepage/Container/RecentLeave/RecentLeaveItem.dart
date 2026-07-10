@@ -27,7 +27,7 @@ class RecentLeaveItem extends StatelessWidget {
                   Text('Sick Leave',
                     style: TextStyle(
                       fontFamily: 'Roboto',
-                      fontWeight: FontWeight(450),
+                      fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: Color(0xFF3A3A3A)
                     ),

@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'Badge/AttendanceBadge.dart';
 
 class AttendanceItem extends StatelessWidget {
+  final String status;
+  final String location;
+  final String date;
+
+  const AttendanceItem({
+    super.key,
+    required this.status,
+    required this.location,
+    required this.date
+    });
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 7),
-      width: 310,
-      height: 100,
       decoration: BoxDecoration( 
         borderRadius: BorderRadius.circular(7.5),
         color: Color(0xFFFCFCFC),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0x25000000),
-            blurRadius: 1.5,
-            spreadRadius: 2,
-            offset: const Offset(0, 0)
-          )
-        ]
       ),
       child: Container(
         child: Column(
@@ -26,172 +28,45 @@ class AttendanceItem extends StatelessWidget {
 
             //Top Part
             Container(
-              padding: EdgeInsets.only(top: 5, bottom: 5, right: 10, left: 10),
+              padding: EdgeInsets.only(top: 5, bottom: 5, right: 15, left: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-
-                  //Location
-                  Text('Office',
-                    style: TextStyle(
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight(450),
-                      fontSize: 16,
-                      color: Color(0xFF3A3A3A)
-                    ),
-                  ), 
-
-                  // Status
                   Container(
-                    child: Row(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('On-Time', //Status
+                        Text(location,
                           style: TextStyle(
                             fontFamily: 'Roboto',
-                            fontWeight: FontWeight(450),
+                            fontWeight: FontWeight.bold,
                             fontSize: 16,
                             color: Color(0xFF3A3A3A)
                           ),
                         ), 
-                        SizedBox(width: 5),
-                        Container(
-                          width: 15,
-                          height: 15,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFF2AAF56),
-                            shape: BoxShape.circle,
+                        Text(date, //Date
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13,
+                            color: Color(0x503A3A3A)
                           ),
                         )
                       ],
                     )
-                  )
+                    //Location
+                  ),
+                  AttendanceBadge(status: status,), // change the status to the flexible
                 ],
               ),
             ),
-
-            //line
+      
+            SizedBox(height: 5,),
             Container(
-              width: 350,
               height: 1,
-              color: Color(0xFFE0E0E0)
+              width: 350,
+              color: Color(0xFFE0E0E0),
             ),
-
-            //Date and Clock in
-            Container(
-              padding: EdgeInsets.only(top: 8, bottom: 8, right: 10, left: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                
-                //Date
-                Container(
-                  child: Row(
-                    children: [
-                      Text('Date: ',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 15,
-                          color: Color(0x703A3A3A),
-                        ),
-                      ),
-
-                      //Date Value
-                      Text('April 7, 2026',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 15,
-                          color: Color(0xFF3A3A3A),
-                        ),
-                      )
-                    ],
-                  )
-                ),
-
-                //Clock in
-                Container(
-                  child: Row(
-                    children: [
-                      Text('Clock In: ',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 15,
-                          color: Color(0x703A3A3A),
-                        ),
-                      ),
-
-                      //Value
-                      Text('7:00 AM',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 15,
-                          color: Color(0xFF3A3A3A),
-                        ),
-                      )
-                    ],
-                  )
-                ),
-
-              ],)
-            ),
-
-            //Duration and Clock out
-            Container(
-              padding: EdgeInsets.only(bottom: 5, right: 10, left: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                
-                //Duration
-                Container(
-                  child: Row(
-                    children: [
-                      Text('Duration: ',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 15,
-                          color: Color(0x703A3A3A),
-                        ),
-                      ),
-
-                      //Date Value
-                      Text('8 Hours',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 15,
-                          color: Color(0xFF3A3A3A),
-                        ),
-                      )
-                    ],
-                  )
-                ),
-
-                //Clock out
-                Container(
-                  child: Row(
-                    children: [
-                      Text('Clock Out: ',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 15,
-                          color: Color(0x703A3A3A),
-                        ),
-                      ),
-
-                      //Value
-                      Text('3:00 PM',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 15,
-                          color: Color(0xFF3A3A3A),
-                        ),
-                      )
-                    ],
-                  )
-                ),
-
-              ],)
-            )
-
           ],
         ),
       )

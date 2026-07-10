@@ -30,7 +30,8 @@ class Welcome extends StatelessWidget {
                 Text("Welcome To",
                   style: TextStyle(
                     fontFamily: 'Roboto',
-                    fontSize: 30
+                    fontSize: 30,
+                    color: Color(0xFF3A3A3A)
                   ),
                 ),
               ]

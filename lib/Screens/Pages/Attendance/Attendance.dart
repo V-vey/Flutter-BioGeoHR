@@ -23,6 +23,7 @@ class Attendance extends StatelessWidget {
         ]
       ),
       child: Column(
+        spacing: 5,
         children: [
           Container(
             padding: EdgeInsets.all(5),
@@ -42,12 +43,12 @@ class Attendance extends StatelessWidget {
             width: 350,
             color: Color(0xFFE0E0E0),
           ),
-          SizedBox(height: 5,),
           // soon change to scrollable
-          AttendanceItem(),
-          AttendanceItem(),
+          AttendanceItem(status: "On-Time", location: "TSU San Isidro",date: '2026-07-08'),
+          AttendanceItem(status: "Absent", location: "TSU San Isidro",date: '2026-07-07'),
+          AttendanceItem(status: "Late", location: "TSU Main Campus",date: '2026-07-06'),
+          AttendanceItem(status: "On-Time", location: "TSU San Isidro",date: '2026-07-05'),
 
-          
         ],
       ),
     );
