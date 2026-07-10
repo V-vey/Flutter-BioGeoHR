@@ -20,7 +20,6 @@ class Navigation extends StatelessWidget{
       unselectedItemColor: Color(0xFF6675EC),
       selectedItemColor: Color(0xFF6675EC),
       selectedLabelStyle: TextStyle(
-        decoration: TextDecoration.underline,
         fontFamily: 'Roboto',
         fontSize: 15,
         fontWeight: FontWeight.bold,

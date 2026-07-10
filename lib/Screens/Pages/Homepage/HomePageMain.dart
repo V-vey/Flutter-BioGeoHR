@@ -7,6 +7,8 @@ import 'Container/TotalLate/TotalLate.dart';
 import 'Container/Paycheck/Paycheck.dart';
 import 'Container/RecentAttendance/RecentAttendance.dart';
 
+import 'Container/Welcome/Welcome.dart';
+
 class HomePageMain extends StatelessWidget {
 
   @override
@@ -17,6 +19,7 @@ class HomePageMain extends StatelessWidget {
         child: Column(
           spacing: 15,
           children: [
+            Welcome(),
             ClockIn(),
             Paycheck(),
             Row(

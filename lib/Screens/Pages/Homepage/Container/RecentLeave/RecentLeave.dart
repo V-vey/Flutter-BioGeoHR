@@ -8,7 +8,7 @@ class RecentLeave extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 350,
-      height: 195,
+      padding: const EdgeInsets.symmetric(vertical: 4), 
       decoration: BoxDecoration( 
         borderRadius: BorderRadius.circular(10),
         color: Color(0xFFFCFCFC),
@@ -34,9 +34,18 @@ class RecentLeave extends StatelessWidget {
               ),
             ),
           ),
-          Container(width: 350, height: 1, color: Color(0xFFE0E0E0)),
-          SizedBox(height: 5),
-          RecentLeaveItem()
+          Container(
+            child: Column(
+              spacing: 10,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(width: 350, height: 1, color: Color(0xFFE0E0E0)),
+                RecentLeaveItem(),
+                
+              ],
+            ),
+          )
+          
         ],
       ),
     );

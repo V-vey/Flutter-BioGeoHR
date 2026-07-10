@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../Reusable/Badge/Attendance/AttendanceBadge.dart';
+import '../../../../Reusable/Badge/AttendanceBadge.dart';
 
 class RecentAttendanceItem extends StatelessWidget {
 

@@ -9,7 +9,7 @@ class TotalLate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 170,
-      height: 155,
+      padding: const EdgeInsets.symmetric(vertical: 4), 
       decoration: BoxDecoration( 
         borderRadius: BorderRadius.circular(10),
         color: Color(0xFFFCFCFC),

@@ -19,7 +19,7 @@ class BioGeoHRLogo extends StatelessWidget {
               fontSize: textSize,
               fontWeight: FontWeight.bold,
               color: Color(0xFF2AAF56),
-              decoration: TextDecoration.underline,
+              
               decorationColor: Color(0xFF6675EC),
             ),
           ),
@@ -30,7 +30,7 @@ class BioGeoHRLogo extends StatelessWidget {
               fontSize: textSize,
               fontWeight: FontWeight.bold,
               color: Color(0xFF6675EC),
-              decoration: TextDecoration.underline,
+              // decoration: TextDecoration.underline,
             ),
           ),
         ],
