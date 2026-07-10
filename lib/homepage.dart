@@ -32,21 +32,34 @@ class _HomepageState extends State<Homepage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 218, 218, 218),
+      backgroundColor: Color.fromARGB(255, 252, 252, 252),
       appBar: const Header(),
       
       body: SingleChildScrollView(
         child: _widgetList[_currentIndex],
       ),
-
-      bottomNavigationBar: Navigation(
-        myIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
+      
+      bottomNavigationBar: Container(
+         decoration: BoxDecoration(
+          color: Colors.white, // Background color under your navigation bar
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06), // Very subtle black shadow
+              blurRadius: 12.0,                      // Softness of the shadow spread
+              spreadRadius: 3.0,                     // Thickness of the shadow
+              offset: const Offset(0, -4),           // Pushes shadow UP into the body screen
+            ),
+          ],
+         ),
+        child: Navigation(  
+          myIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+        ),
+      )
     );
   }
 }
