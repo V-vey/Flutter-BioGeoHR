@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../Reusable/AttendanceItem.dart';
+import '../../Reusable/Items/AttendanceItem.dart';
 
 class Attendance extends StatelessWidget {
 
@@ -25,6 +25,7 @@ class Attendance extends StatelessWidget {
       child: Column(
         spacing: 5,
         children: [
+          SizedBox(),
           Container(
             padding: EdgeInsets.all(5),
             child:

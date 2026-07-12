@@ -10,6 +10,10 @@ import 'Container/RecentAttendance/RecentAttendance.dart';
 import 'Container/Welcome/Welcome.dart';
 
 class HomePageMain extends StatelessWidget {
+final Stopwatch stopwatch = Stopwatch();
+  HomePageMain({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ class HomePageMain extends StatelessWidget {
           spacing: 15,
           children: [
             Welcome(),
-            ClockIn(),
+            ClockIn(stopwatch: stopwatch),
             Paycheck(),
             Row(
               children: [

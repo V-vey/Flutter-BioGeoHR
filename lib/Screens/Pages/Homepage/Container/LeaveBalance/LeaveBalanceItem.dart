@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+import 'package:flutter_biogeohr/Screens/Pages/Attendance/Items/Leave.dart';
+import '../../../../../Controller/Homepage/LeaveBalanceController.dart';
 class LeaveBalanceItem extends StatelessWidget {
+  final LeaveBalance leaveBalance = LeaveBalance();
 
   @override
   Widget build(BuildContext context) {
-    final String annual = "10";
-
+    
     return Container(
       padding: EdgeInsets.only(top: 5, left: 10, right: 10),
       child: Column(
@@ -24,14 +25,36 @@ class LeaveBalanceItem extends StatelessWidget {
                   fontSize: 15.0,
                 ),
               ),
-
-              //Value
-              Text('10',
-                style: TextStyle(
-                  fontFamily: 'Roboto',
-                  color: Color(0xFF3A3A3A),
-                  fontSize: 15.0,
-                ),
+              FutureBuilder(
+                future: leaveBalance.getBalanceLeave("annual"), 
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Text("...",
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        color: Color(0xFF3A3A3A),
+                        fontSize: 15.0,
+                      ),
+                    );
+                  }
+                  if (snapshot.hasError) {
+                    return Text("Error",
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        color: Color(0xFF3A3A3A),
+                        fontSize: 15.0,
+                      ),
+                    );
+                  }
+                  final data = snapshot.data?.toString() ?? "0";
+                  return Text(data,
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      color: Color(0xFF3A3A3A),
+                      fontSize: 15.0,
+                    ),
+                  );
+                }
               )
             ],
           ),
@@ -49,7 +72,7 @@ class LeaveBalanceItem extends StatelessWidget {
                 ),
               ),
               //Value
-              Text('10',
+              Text("1",
                 style: TextStyle(
                   fontFamily: 'Roboto',
                   color: Color(0xFF3A3A3A),
@@ -73,7 +96,7 @@ class LeaveBalanceItem extends StatelessWidget {
               ),
 
               //Value
-              Text('10',
+              Text("2",
                 style: TextStyle(
                   fontFamily: 'Roboto',
                   color: Color(0xFF3A3A3A),
@@ -97,7 +120,7 @@ class LeaveBalanceItem extends StatelessWidget {
               ),
 
               //Value
-              Text('10',
+              Text("3",
                 style: TextStyle(
                   fontFamily: 'Roboto',
                   color: Color(0xFF3A3A3A),

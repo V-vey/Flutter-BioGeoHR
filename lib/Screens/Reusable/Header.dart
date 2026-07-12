@@ -23,28 +23,11 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
           ],
         ), 
         child: AppBar(
-        automaticallyImplyActions: false,
+        automaticallyImplyLeading: false,
         scrolledUnderElevation: 0.0,             // Prevents elevation tint change on scroll
         backgroundColor: Color(0xFFFCFCFC),   // Stops the Material 3 blend effect
         title: const BioGeoHRLogo(textSize: 24),
-        actions: [
-          TextButton(
-            onPressed: () {
-              print('You Got Log Out');
-            },
-            child: const Text(
-              'Log-out',
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                fontFamily: 'Roboto',
-                fontSize: 15,
-                decoration: TextDecoration.underline,
-                decorationColor: Color(0xFFEC6668),
-                color: Color(0xFFEC6668),
-              ),
-            ),
-          ),
-        ],
+
       )
     );
   }

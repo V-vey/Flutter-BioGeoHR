@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_biogeohr/Screens/LoginPage/TextBoxPassword.dart';
 
 //controller
-import 'Controller/LoginText.dart';
+import 'Controller/Login/LoginText.dart';
 
 //Login Page
 import 'Screens/Reusable/TextBioGeoHR.dart';

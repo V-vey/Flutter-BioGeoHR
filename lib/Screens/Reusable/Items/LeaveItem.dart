@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'Badge/AttendanceBadge.dart';
+import '../Badge/LeaveBadge.dart';
 
-class AttendanceItem extends StatelessWidget {
+class LeaveItem extends StatelessWidget {
   final String status;
-  final String location;
+  final String type;
   final String date;
 
-  const AttendanceItem({
+  const LeaveItem({
     super.key,
     required this.status,
-    required this.location,
+    required this.type,
     required this.date
-    });
+  });
 
 
   @override
@@ -36,7 +36,7 @@ class AttendanceItem extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(location,
+                        Text(type,
                           style: TextStyle(
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.bold,
@@ -56,7 +56,7 @@ class AttendanceItem extends StatelessWidget {
                     )
                     //Location
                   ),
-                  AttendanceBadge(status: status,), // change the status to the flexible
+                  LeaveBadge(status: status,), // change the status to the flexible
                 ],
               ),
             ),

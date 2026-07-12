@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_biogeohr/Screens/Reusable/AttendanceItem.dart';
+import 'package:flutter_biogeohr/Screens/Reusable/Items/AttendanceItem.dart';
 
 import 'RecentAttendanceItem.dart';
-import '../../../../Reusable/AttendanceItem.dart';
+import '../../../../Reusable/Items/AttendanceItem.dart';
 
 class RecentAttendance extends StatelessWidget {
 
@@ -46,7 +46,7 @@ class RecentAttendance extends StatelessWidget {
             ),
             Container(width: 350, height: 1, color: Color(0xFFE0E0E0)),
             SizedBox(height: 5),
-            AttendanceItem(status: "On-Time", location: "TSU San Isidro",date: '2026-07-08')
+            AttendanceItem(status: "On-Time", location: "TSU San Isidro",date: '2026-07-08') // Recent
           ],
         ),
       )

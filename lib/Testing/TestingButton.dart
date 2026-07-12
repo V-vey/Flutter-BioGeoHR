@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'TestingScreen.dart';
-
+import '../Controller/Login/LoginText.dart';
 import '../homepage.dart';
+
 class TestingButton extends StatelessWidget {
-  
+  final Logintext logintext = Logintext();
   @override
   Widget build(BuildContext context){
     
@@ -19,16 +20,20 @@ class TestingButton extends StatelessWidget {
           foregroundColor: Colors.white, // Sets the text and icon color
         ),
           onPressed: () async{
-            
-            
+            print("fuck");
+            bool isSuccessful = await logintext.login(
+              'test@example.com',
+              'test'
+            );
+            print("fuck");
             //just to access easily
             Navigator.push(
-            context,
+              context,
               MaterialPageRoute(
                 builder: (context) => Homepage(),
               ),
             );
-          }, 
+          },
         child: Text('Testing',
           style: TextStyle(
             fontFamily: 'Roboto',

@@ -15,7 +15,10 @@ import 'Screens/Pages/Leave/LeavePageMain.dart';
 import 'Screens/Pages/Profile/ProfilePageMain.dart';
 
 class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+
+  const Homepage({
+    super.key,
+  });
 
   @override
   State<Homepage> createState() => _HomepageState();
@@ -29,6 +32,8 @@ class _HomepageState extends State<Homepage>{
     LeavePageMain(),
     ProfilePageMain(),
   ];
+  
+  static get lBal => null;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

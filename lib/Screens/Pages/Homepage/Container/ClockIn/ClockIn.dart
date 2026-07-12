@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
+import '../../../../Reusable/Badge/TimeBadge.dart';
+import '../../../../../Controller/Homepage/GetLocation.dart';
 import 'Time.dart';
+import 'LocationList.dart';
 
-bool isRunning = false;
-final Stopwatch _timerController = Stopwatch();
-class ClockIn extends StatefulWidget {
-  
-  @override
-  State<ClockIn> createState() => _ClockInState();
-}
 
-class _ClockInState extends State<ClockIn> {
-  final Stopwatch stopwatch = Stopwatch();
-
+//testing 
+import '../../../../../Controller/Homepage/LeaveBalanceController.dart';
+class ClockIn extends StatelessWidget {
+  final stopwatch;
+  ClockIn({
+    super.key,
+    required this.stopwatch,
+  });
+  final LeaveBalance bal = LeaveBalance();
+  final GetLocation location = GetLocation();
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 350,
-      height: 80,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Color(0xFFFCFCFC),
@@ -29,95 +30,35 @@ class _ClockInState extends State<ClockIn> {
             spreadRadius: 4.0,
             offset: const Offset(0, 2)
           )
-        ]
+        ] 
       ),
+      padding: EdgeInsets.all(10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        
         children: [
-          Padding(
-            padding: EdgeInsets.only(top: 10, bottom: 10, left: 10),
+          Container(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Container(
-                 // Adds space inside the badge around the text and dot
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                decoration: BoxDecoration(
-                  color: const Color(0x222AAF56), // Light green background
-                  borderRadius: BorderRadius.circular(20.0), // Rounded capsule edges
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min, // Shrinks the badge to fit its contents tightly
-                  
-                  children: [
-                    // 1. The Label Text
-                    const Text(
-                      'Active',
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        color: Color(0xFF3A3A3A),
-                        fontSize: 17.0,
-
-                      ),
-                    ),
-                    
-                    // Spacing between the text and the circle dot
-                    const SizedBox(width: 8.0),
-                    
-                    // 2. The Status Dot (Circle Box)
-                    Container(
-                      width: 10,
-                      height: 10,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF2AAF56), // Bright solid green color
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-                Container(
-                  padding: EdgeInsets.only(top: 5),
-                  child: Row(
-                    children: [
-                      Icon(Icons.access_time), //icon
-                      Time(
-                        isRunning: isRunning,
-                        controller: stopwatch,
-                      ) //time
-                    ]
-                  )
-                )
-              ], // Children
+                TimeBadge(status: "Active"),
+                Time(isRunning: true, controller: stopwatch)
+              ],
             ),
           ),
           Spacer(),
-          //biometric button
-          Padding( 
-            padding: EdgeInsets.only(right: 10, top: 15, bottom: 15),
-            child: 
-              IconButton.filled(onPressed: (){
-                if (isRunning == false){
-                  isRunning = true;
-                  print("widget.isRunning: ${isRunning}");
-                } else {
-                  isRunning = false;
-                  print("widget.isRunning: ${isRunning}");
-                }
-
-              }, 
-              icon: Icon(
-                Icons.fingerprint,
-                color: Color(0xFFFCFCFC),
-                // size: 30,
-              ),
-              padding: EdgeInsets.zero,
-              style: IconButton.styleFrom(
-                backgroundColor: Color(0xFF2AAF56),
-                iconSize: 40,
-                fixedSize: Size(50, 50)
-              ),
+          Container(
+            child: Column(
+              children: [
+                LocationList(),
+                TextButton(
+                  
+                  onPressed: ()  async {
+                    // List testing = await location.getLocation();
+                    String testing = await bal.getBalanceLeave("annual").toString();
+                    print(testing);
+                  },
+                  
+                  child: Text("clock in")
+                )
+              ],
             ),
           )
         ],

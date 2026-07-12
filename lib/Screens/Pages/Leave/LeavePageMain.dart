@@ -14,7 +14,7 @@ class LeavePageMain extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-              LeaveBalance(),
+              LeaveBalance(annualBal: '12',patBal: '14', unpaidBal: '1', sickBal: '7',),
               SizedBox(height: 15),
               LeaveHistory(),
           ]

@@ -6,7 +6,7 @@ import '../LoginPage/TextBoxEmail.dart';
 import '../LoginPage/TextBoxPassword.dart';
 
 //process
-import '../../Controller/LoginText.dart';
+import '../../Controller/Login/LoginText.dart';
 
 class Loginbutton extends StatelessWidget {
   final TextEditingController emailController;
