@@ -37,7 +37,10 @@ class LeaveBalanceItem extends StatelessWidget {
                       ),
                     );
                   }
-                  if (snapshot.hasError) {
+                  else if (!snapshot.hasData) {
+                    return Text("No Data");
+                  }
+                  else if (snapshot.hasError) {
                     return Text("Error",
                       style: TextStyle(
                         fontFamily: 'Roboto',
@@ -46,8 +49,10 @@ class LeaveBalanceItem extends StatelessWidget {
                       ),
                     );
                   }
-                  final data = snapshot.data?.toString() ?? "0";
-                  return Text(data,
+                  
+                  final data = snapshot.data!;
+                  
+                  return Text(data.toString(),
                     style: TextStyle(
                       fontFamily: 'Roboto',
                       color: Color(0xFF3A3A3A),
@@ -71,13 +76,43 @@ class LeaveBalanceItem extends StatelessWidget {
                   fontSize: 15.0,
                 ),
               ),
+
               //Value
-              Text("1",
-                style: TextStyle(
-                  fontFamily: 'Roboto',
-                  color: Color(0xFF3A3A3A),
-                  fontSize: 15.0,
-                ),
+              FutureBuilder(
+                future: leaveBalance.getBalanceLeave("sick"), 
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Text("...",
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        color: Color(0xFF3A3A3A),
+                        fontSize: 15.0,
+                      ),
+                    );
+                  }
+                  else if (!snapshot.hasData) {
+                    return Text("No Data");
+                  }
+                  else if (snapshot.hasError) {
+                    return Text("Error",
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        color: Color(0xFF3A3A3A),
+                        fontSize: 15.0,
+                      ),
+                    );
+                  }
+                  
+                  final data = snapshot.data!;
+                  
+                  return Text(data.toString(),
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      color: Color(0xFF3A3A3A),
+                      fontSize: 15.0,
+                    ),
+                  );
+                }
               )
             ],
           ),
@@ -96,12 +131,41 @@ class LeaveBalanceItem extends StatelessWidget {
               ),
 
               //Value
-              Text("2",
-                style: TextStyle(
-                  fontFamily: 'Roboto',
-                  color: Color(0xFF3A3A3A),
-                  fontSize: 15.0,
-                ),
+              FutureBuilder(
+                future: leaveBalance.getBalanceLeave("patern"), 
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Text("...",
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        color: Color(0xFF3A3A3A),
+                        fontSize: 15.0,
+                      ),
+                    );
+                  }
+                  else if (!snapshot.hasData) {
+                    return Text("No Data");
+                  }
+                  else if (snapshot.hasError) {
+                    return Text("Error",
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        color: Color(0xFF3A3A3A),
+                        fontSize: 15.0,
+                      ),
+                    );
+                  }
+                  
+                  final data = snapshot.data!;
+                  
+                  return Text(data.toString(),
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      color: Color(0xFF3A3A3A),
+                      fontSize: 15.0,
+                    ),
+                  );
+                }
               )
             ],
           ),
@@ -120,12 +184,41 @@ class LeaveBalanceItem extends StatelessWidget {
               ),
 
               //Value
-              Text("3",
-                style: TextStyle(
-                  fontFamily: 'Roboto',
-                  color: Color(0xFF3A3A3A),
-                  fontSize: 15.0,
-                ),
+              FutureBuilder(
+                future: leaveBalance.getBalanceLeave("unpaid"), 
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Text("...",
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        color: Color(0xFF3A3A3A),
+                        fontSize: 15.0,
+                      ),
+                    );
+                  }
+                  else if (!snapshot.hasData) {
+                    return Text("No Data");
+                  }
+                  else if (snapshot.hasError) {
+                    return Text("Error",
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        color: Color(0xFF3A3A3A),
+                        fontSize: 15.0,
+                      ),
+                    );
+                  }
+                  
+                  final data = snapshot.data!;
+                  
+                  return Text(data.toString(),
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      color: Color(0xFF3A3A3A),
+                      fontSize: 15.0,
+                    ),
+                  );
+                }
               )
             ],
           ),

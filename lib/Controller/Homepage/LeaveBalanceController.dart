@@ -8,11 +8,21 @@ class LeaveBalance{
   
   getLeave(data, type) async {
     if (await type == "annual"){
-      return data["annual_leave"];
+      String annual = data['annual_leave'].toString();
+      return annual;
+    } else if (await type == 'sick') {
+      String sick = data['sick_leave'].toString();
+      return sick;
+    } else if (await type == 'patern') {
+      String patern = data['patternity_leave'].toString();
+      return patern;
+    } else if (await type == 'unpaid') {
+      String unpaid = data['unpaid_leave'].toString();
+      return unpaid;
     }
   }
 
-  Future<String> getBalanceLeave(type) async {
+  Future<dynamic> getBalanceLeave(type) async {
     final prefs = await SharedPreferences.getInstance();
 
     String? token = prefs.getString("token");
@@ -32,8 +42,7 @@ class LeaveBalance{
     );
     print(response.body);
     if (response.statusCode == 200) {
-      Map<int, dynamic> data = jsonDecode(response.body);
-      return getLeave(data, type).toString();
+      return getLeave(jsonDecode(response.body), type);
     } else {
       throw Exception('Failed to load leave balance: ${response.statusCode}');
     }
