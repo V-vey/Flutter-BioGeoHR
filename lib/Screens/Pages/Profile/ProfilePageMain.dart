@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_biogeohr/main.dart';
 
 import '../Attendance/Attendance.dart';
 import '../Attendance/MonthlyAttendance.dart';
 
-class ProfilePageMain extends StatelessWidget {
+import '../../../Controller/Login/Logout.dart';
 
+
+class ProfilePageMain extends StatelessWidget {
+  final Logout logout = Logout();
   @override
   Widget build(BuildContext context) {
     var items = 
@@ -126,7 +130,8 @@ class ProfilePageMain extends StatelessWidget {
 
                   child: FilledButton(
                     onPressed: () {
-
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                      print(logout.logoutUser());
                   }, 
                   child: Text("Logout")
                   )
