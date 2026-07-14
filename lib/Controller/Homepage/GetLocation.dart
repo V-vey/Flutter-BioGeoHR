@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class GetLocation {
 
-  Future<List> getLocation() async {
+  Future<List<String>> getLocation() async {
     // List names;
     print("object 1");
     final url = Uri.parse('http://192.168.254.104:8080/api/location');

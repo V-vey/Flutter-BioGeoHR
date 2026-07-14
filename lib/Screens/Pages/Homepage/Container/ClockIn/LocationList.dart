@@ -1,44 +1,47 @@
 import 'package:flutter/material.dart';
 import '../../../../../Controller/Homepage/GetLocation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../../../../Controller/Login/AuthStorage.dart';
 
 class LocationList extends StatefulWidget{
+
   @override
   State<LocationList> createState() => _LocationListState();
 }
 
-
-
 class _LocationListState extends State<LocationList> {
   //location Available 
   final GetLocation location = GetLocation();
-  late Future<List<dynamic>> items;
-  String? selectedValue;
-  String? _dropdownValue;
+  String? selectedValue = 'Select Location';
+  late final Future<List<String>> listLocation = location.getLocation();
+  late String temp;
+  final AuthStorage authStorage = AuthStorage();
 
-  @override
-  void initState() {
-    super.initState();
-    // Fetch the data only once when the widget starts
-    items = location.getLocation();
-  }
-  void dropdownCallback(String? selectedValue){
-    if (selectedValue is String){
-      setState(() {
-        _dropdownValue = selectedValue;
-      });
-    }
-  }
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-      items: const[
-        DropdownMenuItem(child: Text("dash"), value: "dash",),
-        DropdownMenuItem(child: Text("dasha"), value: "dasha",),
-        DropdownMenuItem(child: Text("dashs"), value: "dashs",),
-        DropdownMenuItem(child: Text("dasdh"), value: "dasdh",),
-      ],
-      value: _dropdownValue,
-      onChanged: dropdownCallback);
+    return FutureBuilder<List<String>>(
+      future: listLocation,
+      builder: (context, snapshot) {
+        final items = snapshot.data ?? <String>[];
+        return DropdownButton<String>(
+          value: items.contains(selectedValue) ? selectedValue : null,
+          hint: Text(selectedValue ?? 'Select Location'),
+          items: items.map((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+          onChanged: (String? newValue) {
+            setState(() {
+              selectedValue = newValue;
+              authStorage.saveTemp(selectedValue!);
+              print(selectedValue);
+            });
+            
+          },
+        );
+      },
+    );
   }
 }
-

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_biogeohr/Screens/Pages/Homepage/Container/ClockIn/ClockInButton.dart';
 import 'dart:async';
 import '../../../../Reusable/Badge/TimeBadge.dart';
 import '../../../../../Controller/Homepage/GetLocation.dart';
@@ -16,6 +17,9 @@ class ClockIn extends StatelessWidget {
   });
   final LeaveBalance bal = LeaveBalance();
   final GetLocation location = GetLocation();
+
+  String? selectedValue = 'Select Location';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,16 +52,7 @@ class ClockIn extends StatelessWidget {
             child: Column(
               children: [
                 LocationList(),
-                TextButton(
-                  
-                  onPressed: ()  async {
-                    // List testing = await location.getLocation();
-                    String testing = await bal.getBalanceLeave("annual").toString();
-                    print(testing);
-                  },
-                  
-                  child: Text("clock in")
-                )
+                Clockinbutton()
               ],
             ),
           )
