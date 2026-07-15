@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_biogeohr/Controller/Homepage/LocationCheck.dart';
 import '../../../../../Controller/Homepage/GetLocation.dart';
 import '../../../../../Controller/Login/AuthStorage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,6 +19,7 @@ class Clockinbutton extends StatelessWidget{
       onPressed: ()  async {
         final prefs = await SharedPreferences.getInstance();
         String? val = prefs.getString("temp");
+        getUserCoordinates();
         print(val);
       },
       
