@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import '../Login/AuthStorage.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<Position> _determinePosition() async {
   bool serviceEnabled;
@@ -33,15 +37,36 @@ Future<Position> _determinePosition() async {
   );
 }
 
-void getUserCoordinates() async {
+Future<void> getUserCoordinates() async {
   try {
+
     Position position = await _determinePosition();
-    
     double latitude = position.latitude;
     double longitude = position.longitude;
+
+    print("Longitude: $longitude Latitude: $latitude");
+    final prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString("token");
+    String? locationName = prefs.getString("temp");
+
+    final url = Uri.parse('http://192.168.254.104:8080/api/geofence');
+    final response = await http.post(
+      url,
+      headers: {
+        "Authorization": "Bearer $token",
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: jsonEncode({
+        "userLong": longitude,
+        "userLat": latitude,
+        "locationName": locationName
+      }),
+    );
     
-    print('Latitude: $latitude');
-    print('Longitude: $longitude');
+    String test = response.body;
+    print(locationName);
+    print('GeoFence: $test');
   } catch (e) {
     print('Error getting location: $e');
   }
