@@ -41,10 +41,9 @@ Future<void> getUserCoordinates() async {
   try {
 
     Position position = await _determinePosition();
-    double latitude = position.latitude;
-    double longitude = position.longitude;
 
-    print("Longitude: $longitude Latitude: $latitude");
+    print(position.longitude);
+    print(position.latitude);
     final prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString("token");
     String? locationName = prefs.getString("temp");
@@ -58,15 +57,14 @@ Future<void> getUserCoordinates() async {
         "Content-Type": "application/json",
       },
       body: jsonEncode({
-        "userLong": longitude,
-        "userLat": latitude,
+        "userLong": position.longitude,
+        "userLat": position.latitude,
         "locationName": locationName
       }),
     );
-    
-    String test = response.body;
+
     print(locationName);
-    print('GeoFence: $test');
+    print(response.body);
   } catch (e) {
     print('Error getting location: $e');
   }

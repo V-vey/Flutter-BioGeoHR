@@ -6,15 +6,12 @@ import '../../../../../Controller/Homepage/GetLocation.dart';
 import 'Time.dart';
 import 'LocationList.dart';
 
-
-//testing 
+//testing
 import '../../../../../Controller/Homepage/LeaveBalanceController.dart';
+
 class ClockIn extends StatelessWidget {
   final stopwatch;
-  ClockIn({
-    super.key,
-    required this.stopwatch,
-  });
+  ClockIn({super.key, required this.stopwatch});
   final LeaveBalance bal = LeaveBalance();
   final GetLocation location = GetLocation();
 
@@ -32,9 +29,9 @@ class ClockIn extends StatelessWidget {
             color: Colors.black.withAlpha(20),
             blurRadius: 6.0,
             spreadRadius: 4.0,
-            offset: const Offset(0, 2)
-          )
-        ] 
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       padding: EdgeInsets.all(10),
       child: Row(
@@ -43,19 +40,12 @@ class ClockIn extends StatelessWidget {
             child: Column(
               children: [
                 TimeBadge(status: "Active"),
-                Time(isRunning: true, controller: stopwatch)
+                Time(),
               ],
             ),
           ),
           Spacer(),
-          Container(
-            child: Column(
-              children: [
-                LocationList(),
-                Clockinbutton()
-              ],
-            ),
-          )
+          Container(child: Column(children: [LocationList(), Clockinbutton()])),
         ],
       ),
     );

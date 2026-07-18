@@ -1,50 +1,70 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class Time extends StatefulWidget {
-  final bool isRunning;
-  final Stopwatch controller;
-  const Time({
-    super.key,
-    required this.isRunning,
-    required this.controller
-    });
-
   @override
   State<Time> createState() => _TimeState();
 }
 
-class _TimeState extends State<Time> {
-  void startStopwatch(Stopwatch stopwatch) {
-    if (!widget.isRunning) {
-      stopwatch.start();
-      print("start");
-    } else {
-      stopwatch.stop();
-      print("stop");
-    }
+class _TimeState extends State<Time> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  final stopwatch = Stopwatch();
+
+  Duration duration = Duration();
+  Timer? timer;
+  bool isCountdown = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    startTimer();
+    // reset();
   }
 
-  String formatDuration(Duration duration){
-    startStopwatch(Stopwatch());
-    String twoDigits(int n) => n.toString().padLeft(2, '0');
+  void addTimer() {
+    setState(() {
+      final seconds = duration.inSeconds + 1;
 
-    final hours = twoDigits(duration.inHours);
-    final minutes = twoDigits(duration.inMinutes.remainder(60));
-    final seconds = twoDigits(duration.inSeconds.remainder(60));
-
-    return "$hours:$minutes:$seconds";
+      duration = Duration(seconds: seconds);
+    });
   }
 
-  @override 
+  //call to start
+  void startTimer() {
+    timer = Timer.periodic(Duration(seconds: 1), (_) => addTimer());
+  }
+
+  //call to Reset
+  void reset() {
+    setState(() {
+      duration = Duration();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Text(
-      formatDuration(Stopwatch().elapsed),
-      style: TextStyle(
-        fontFamily: 'Roboto',
-        fontSize: 20,
-        fontWeight: FontWeight.w500,
-        color: Color(0xFF2AAF56),
-      ),
+    super.build(context);
+    // Format DIGITS
+    String twoDigits(int n) => n.toString().padLeft(2, "0");
+    final hrs = twoDigits(duration.inHours);
+    final min = twoDigits(duration.inMinutes.remainder(60));
+    final sec = twoDigits(duration.inSeconds.remainder(60));
+
+    return Column(
+      children: [
+        Text("$hrs:$min:$sec"),
+        ElevatedButton(
+          onPressed: () {
+            // startTimer();
+            reset();
+          },
+          child: Text("button Test"),
+        ),
+      ],
     );
   }
 }
