@@ -1,24 +1,40 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_biogeohr/Screens/Pages/Homepage/Container/ClockIn/ClockInButton.dart';
 import 'dart:async';
 import '../../../../Reusable/Badge/TimeBadge.dart';
-import '../../../../../Controller/Homepage/GetLocation.dart';
+import '../../../../../Controller/Homepage/ClockIn/GetLocation.dart';
 import 'Time.dart';
 import 'LocationList.dart';
-
+import 'ClockInButton.dart';
 //testing
 import '../../../../../Controller/Homepage/LeaveBalanceController.dart';
 
-class ClockIn extends StatelessWidget {
-  final stopwatch;
-  ClockIn({super.key, required this.stopwatch});
-  final LeaveBalance bal = LeaveBalance();
-  final GetLocation location = GetLocation();
+class ClockIn extends StatefulWidget {
+  @override
+  State<ClockIn> createState() => _ClockInState();
+}
 
+class _ClockInState extends State<ClockIn> {
+  final LeaveBalance bal = LeaveBalance();
+
+  final GetLocation location = GetLocation();
+  String status = "Inactive";
   String? selectedValue = 'Select Location';
+  void setStatusActive() {
+    setState(() {
+      status = 'Active';
+    });
+  }
+
+  void setStatusInactive() {
+    setState(() {
+      status = 'Inactive';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    //for the timer to global call function
     return Container(
       width: 350,
       decoration: BoxDecoration(
@@ -34,18 +50,19 @@ class ClockIn extends StatelessWidget {
         ],
       ),
       padding: EdgeInsets.all(10),
-      child: Row(
+      child: Column(
         children: [
           Container(
-            child: Column(
+            child: Row(
               children: [
-                TimeBadge(status: "Active"),
-                Time(),
+                TimeBadge(status: status),
+                Spacer(),
+                LocationList(),
               ],
             ),
           ),
-          Spacer(),
-          Container(child: Column(children: [LocationList(), Clockinbutton()])),
+          //timer and button for callback start
+          Time(),
         ],
       ),
     );

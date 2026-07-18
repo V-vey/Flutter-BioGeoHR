@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import '../../../../../Controller/Homepage/GetLocation.dart';
+import '../../../../../Controller/Homepage/ClockIn/GetLocation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../Controller/Login/AuthStorage.dart';
 
-class LocationList extends StatefulWidget{
-
+class LocationList extends StatefulWidget {
   @override
   State<LocationList> createState() => _LocationListState();
 }
 
 class _LocationListState extends State<LocationList> {
-  //location Available 
+  //location Available
   final GetLocation location = GetLocation();
   String? selectedValue = 'Select Location';
   late final Future<List<String>> listLocation = location.getLocation();
@@ -27,10 +26,7 @@ class _LocationListState extends State<LocationList> {
           value: items.contains(selectedValue) ? selectedValue : null,
           hint: Text(selectedValue ?? 'Select Location'),
           items: items.map((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
+            return DropdownMenuItem<String>(value: value, child: Text(value));
           }).toList(),
           onChanged: (String? newValue) {
             setState(() {
@@ -38,7 +34,6 @@ class _LocationListState extends State<LocationList> {
               authStorage.saveTemp(selectedValue!);
               print(selectedValue);
             });
-            
           },
         );
       },

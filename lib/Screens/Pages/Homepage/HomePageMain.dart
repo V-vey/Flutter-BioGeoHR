@@ -6,25 +6,27 @@ import 'Container/LeaveBalance/LeaveBalance.dart';
 import 'Container/TotalLate/TotalLate.dart';
 import 'Container/Paycheck/Paycheck.dart';
 import 'Container/RecentAttendance/RecentAttendance.dart';
-
+import 'Container/ClockIn/Time.dart';
 import 'Container/Welcome/Welcome.dart';
 
-class HomePageMain extends StatelessWidget {
-final Stopwatch stopwatch = Stopwatch();
-  HomePageMain({
-    super.key,
-  });
+class HomePageMain extends StatefulWidget {
+  @override
+  State<HomePageMain> createState() => _HomePageMainState();
+}
 
+class _HomePageMainState extends State<HomePageMain>
+    with AutomaticKeepAliveClientMixin {
+  bool get wantKeepAlive => true;
   @override
   Widget build(BuildContext context) {
-    var items = 
-      Container(
+    var items = SingleChildScrollView(
+      child: Container(
         margin: EdgeInsets.all(15),
         child: Column(
           spacing: 15,
           children: [
             Welcome(),
-            ClockIn(stopwatch: stopwatch),
+            ClockIn(),
             Paycheck(),
             Row(
               children: [
@@ -34,16 +36,17 @@ final Stopwatch stopwatch = Stopwatch();
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 7.5),
-                  child: LeaveBalance()
-                )
-              ]
+                  child: LeaveBalance(),
+                ),
+              ],
             ),
             RecentAttendance(),
             RecentLeave(),
-          ]
-        )
-      );
-      
+          ],
+        ),
+      ),
+    );
+
     return items;
   }
 }

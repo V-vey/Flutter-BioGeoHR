@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import '../Login/AuthStorage.dart';
+import '../../Login/AuthStorage.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,22 +24,19 @@ Future<Position> _determinePosition() async {
       return Future.error('Location permissions are denied.');
     }
   }
-  
+
   if (permission == LocationPermission.deniedForever) {
     return Future.error('Location permissions are permanently denied.');
-  } 
+  }
 
   // 3. Fetch and return the current position.
   return await Geolocator.getCurrentPosition(
-    locationSettings: const LocationSettings(
-      accuracy: LocationAccuracy.high,
-    ),
+    locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
   );
 }
 
 Future<void> getUserCoordinates() async {
   try {
-
     Position position = await _determinePosition();
 
     print(position.longitude);
@@ -59,7 +56,7 @@ Future<void> getUserCoordinates() async {
       body: jsonEncode({
         "userLong": position.longitude,
         "userLat": position.latitude,
-        "locationName": locationName
+        "locationName": locationName,
       }),
     );
 
@@ -69,4 +66,3 @@ Future<void> getUserCoordinates() async {
     print('Error getting location: $e');
   }
 }
-

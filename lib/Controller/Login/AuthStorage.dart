@@ -1,6 +1,17 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthStorage {
+  //Save the bool if its running
+  Future<void> saveTime(bool isRunning) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool("isRunning", isRunning);
+  }
+
+  //to check is its start or not the timer
+  Future<bool?> getTime() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool("isRunning");
+  }
 
   //Save Temporary Storage
   Future<void> saveTemp(String temp) async {

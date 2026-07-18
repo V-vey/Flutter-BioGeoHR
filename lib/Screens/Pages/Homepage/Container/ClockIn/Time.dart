@@ -2,27 +2,26 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:flutter_biogeohr/Screens/Pages/Homepage/Container/ClockIn/ClockInButton.dart';
+
 class Time extends StatefulWidget {
+  const Time({super.key});
+
   @override
   State<Time> createState() => _TimeState();
 }
 
-class _TimeState extends State<Time> with AutomaticKeepAliveClientMixin {
+void start() {}
+
+class _TimeState extends State<Time> {
   @override
-  bool get wantKeepAlive => true;
-
-  final stopwatch = Stopwatch();
-
   Duration duration = Duration();
   Timer? timer;
-  bool isCountdown = true;
+  bool? isRunning;
 
   @override
   void initState() {
     super.initState();
-
-    startTimer();
-    // reset();
   }
 
   void addTimer() {
@@ -34,7 +33,7 @@ class _TimeState extends State<Time> with AutomaticKeepAliveClientMixin {
   }
 
   //call to start
-  void startTimer() {
+  void start() {
     timer = Timer.periodic(Duration(seconds: 1), (_) => addTimer());
   }
 
@@ -46,24 +45,32 @@ class _TimeState extends State<Time> with AutomaticKeepAliveClientMixin {
   }
 
   @override
+  void dispose() {
+    timer?.cancel(); // Always clean up your timer to prevent memory leaks
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    super.build(context);
     // Format DIGITS
     String twoDigits(int n) => n.toString().padLeft(2, "0");
     final hrs = twoDigits(duration.inHours);
     final min = twoDigits(duration.inMinutes.remainder(60));
     final sec = twoDigits(duration.inSeconds.remainder(60));
 
-    return Column(
+    return Row(
       children: [
-        Text("$hrs:$min:$sec"),
-        ElevatedButton(
-          onPressed: () {
-            // startTimer();
-            reset();
-          },
-          child: Text("button Test"),
+        Text(
+          "$hrs:$min:$sec",
+          style: TextStyle(
+            color: Color(0xFF3A3A3A),
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.bold,
+            fontSize: 17,
+          ),
         ),
+        Spacer(),
+        Clockinbutton(timerStart: start, timerReset: reset),
       ],
     );
   }
