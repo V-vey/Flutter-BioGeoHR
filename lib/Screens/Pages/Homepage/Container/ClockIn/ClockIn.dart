@@ -23,7 +23,7 @@ class _ClockInState extends State<ClockIn> {
   @override
   Duration duration = Duration();
   Timer? timer;
-  bool? isRunning;
+  bool isRunning = false;
 
   void addTimer() {
     setState(() {
@@ -35,16 +35,20 @@ class _ClockInState extends State<ClockIn> {
 
   //call to start
   void start() {
-    if (timer!.isActive) {
-      timer = Timer.periodic(Duration(seconds: 1), (_) => addTimer());
-    } else {
-      timer?.cancel();
-    }
+    if (isRunning == true) return;
+
+    isRunning = true;
+    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        addTimer();
+      });
+    });
   }
 
   //call to Reset
   void reset() {
     setState(() {
+      isRunning = false;
       duration = Duration();
       timer?.cancel();
     });
@@ -116,6 +120,7 @@ class _ClockInState extends State<ClockIn> {
               Clockinbutton(
                 timerStart: start,
                 timerReset: reset,
+                isRunning: isRunning,
                 statusActive: setStatusActive,
                 statusInactive: setStatusInactive,
               ),

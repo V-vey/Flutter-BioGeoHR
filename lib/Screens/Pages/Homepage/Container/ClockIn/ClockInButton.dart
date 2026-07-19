@@ -13,6 +13,8 @@ class Clockinbutton extends StatelessWidget {
   //Timer call back
   final VoidCallback timerStart;
   final VoidCallback timerReset;
+  //Check if its runnning
+  final bool isRunning;
 
   //status
   final VoidCallback statusActive;
@@ -21,6 +23,7 @@ class Clockinbutton extends StatelessWidget {
     super.key,
     required this.timerStart,
     required this.timerReset,
+    required this.isRunning,
     required this.statusActive,
     required this.statusInactive,
   });
@@ -31,27 +34,23 @@ class Clockinbutton extends StatelessWidget {
       children: [
         TextButton(
           onPressed: () async {
-            final prefs = await SharedPreferences.getInstance();
-            String? val = prefs.getString("temp"); // location
             getUserCoordinates();
             biometric.checkBiometric();
+
             timerStart();
             statusActive();
-            //cicle of timer true and false
-            authStorage.getTime().then((value) {
-              if (value == true) {
-                authStorage.saveTime(false);
-                timerReset();
-                statusInactive();
-              } else {
-                authStorage.saveTime(true);
-                timerStart();
-                statusActive();
-              }
-              print("Time Value: $value");
-            });
+            if (isRunning == true) {
+              authStorage.saveTime(false);
+              timerReset();
+              statusInactive();
+            } else {
+              authStorage.saveTime(true);
+              timerStart();
+              statusActive();
+            }
+            print("Time Value: $isRunning");
 
-            print(val);
+            print(isRunning);
           },
 
           child: Text("clock in"),
