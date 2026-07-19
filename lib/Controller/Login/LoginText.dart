@@ -11,7 +11,7 @@ class Logintext {
   late String userId;
   final AuthStorage authStorage = AuthStorage();
 
-  String getToken(){
+  String getToken() {
     return token;
   }
 
@@ -25,23 +25,19 @@ class Logintext {
 
       auth = true;
     }
-    return auth;  
-    
-  }  
-  Future<bool> login(String email, String password) async {
+    return auth;
+  }
 
+  Future<bool> login(String email, String password) async {
     final url = Uri.parse('http://192.168.254.104:8080/api/login');
 
     final response = await http.post(
       url,
       headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      body: jsonEncode({
-        "email": email,
-        "password": password,
-      }),
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: jsonEncode({"email": email, "password": password}),
     );
 
     if (response.statusCode == 201) {
@@ -51,5 +47,4 @@ class Logintext {
     print(email + password);
     return false;
   }
-  
 }

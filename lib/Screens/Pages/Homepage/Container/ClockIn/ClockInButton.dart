@@ -34,19 +34,20 @@ class Clockinbutton extends StatelessWidget {
       children: [
         TextButton(
           onPressed: () async {
-            getUserCoordinates();
             biometric.checkBiometric();
 
-            timerStart();
-            statusActive();
+            //check if the timer is running
             if (isRunning == true) {
-              authStorage.saveTime(false);
               timerReset();
               statusInactive();
             } else {
-              authStorage.saveTime(true);
-              timerStart();
-              statusActive();
+              //check if the user is in the coordinate
+              if (await verifyUserCoordinates() == true) {
+                timerStart();
+                statusActive();
+              } else {
+                print("User Not is the range of the location");
+              }
             }
             print("Time Value: $isRunning");
 

@@ -5,6 +5,13 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+bool _checkPosition(statusCode) {
+  if (statusCode == 200) {
+    return true;
+  }
+  return false;
+}
+
 Future<Position> _determinePosition() async {
   bool serviceEnabled;
   LocationPermission permission;
@@ -35,34 +42,35 @@ Future<Position> _determinePosition() async {
   );
 }
 
-Future<void> getUserCoordinates() async {
-  try {
-    Position position = await _determinePosition();
+Future<bool> verifyUserCoordinates() async {
+  // try {
+  Position position = await _determinePosition();
 
-    print(position.longitude);
-    print(position.latitude);
-    final prefs = await SharedPreferences.getInstance();
-    String? token = prefs.getString("token");
-    String? locationName = prefs.getString("temp");
+  print(position.longitude);
+  print(position.latitude);
+  final prefs = await SharedPreferences.getInstance();
 
-    final url = Uri.parse('http://192.168.254.104:8080/api/geofence');
-    final response = await http.post(
-      url,
-      headers: {
-        "Authorization": "Bearer $token",
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      },
-      body: jsonEncode({
-        "userLong": position.longitude,
-        "userLat": position.latitude,
-        "locationName": locationName,
-      }),
-    );
+  //access the user
+  String? token = prefs.getString("token");
+  String? locationName = prefs.getString("temp");
 
-    print(locationName);
-    print(response.body);
-  } catch (e) {
-    print('Error getting location: $e');
-  }
+  final url = Uri.parse('http://192.168.254.104:8080/api/geofence');
+  final response = await http.post(
+    url,
+    headers: {
+      "Authorization": "Bearer $token",
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    },
+    body: jsonEncode({
+      "userLong": position.longitude,
+      "userLat": position.latitude,
+      "locationName": locationName,
+    }),
+  );
+  print(response.body);
+  return _checkPosition(response.statusCode);
+  // } catch (e) {
+  //   print('Error getting location: $e');
+  // }
 }
