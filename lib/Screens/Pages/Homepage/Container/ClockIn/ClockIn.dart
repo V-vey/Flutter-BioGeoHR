@@ -18,8 +18,57 @@ class _ClockInState extends State<ClockIn> {
   final LeaveBalance bal = LeaveBalance();
 
   final GetLocation location = GetLocation();
+
+  //TIMER
+  @override
+  Duration duration = Duration();
+  Timer? timer;
+  bool? isRunning;
+
+  void addTimer() {
+    setState(() {
+      final seconds = duration.inSeconds + 1;
+
+      duration = Duration(seconds: seconds);
+    });
+  }
+
+  //call to start
+  void start() {
+    if (timer!.isActive) {
+      timer = Timer.periodic(Duration(seconds: 1), (_) => addTimer());
+    } else {
+      timer?.cancel();
+    }
+  }
+
+  //call to Reset
+  void reset() {
+    setState(() {
+      duration = Duration();
+      timer?.cancel();
+    });
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel(); // Always clean up your timer to prevent memory leaks
+    super.dispose();
+  }
+
+  //timer text format
+  @override
+  String timerText() {
+    // Format DIGITS
+    String twoDigits(int n) => n.toString().padLeft(2, "0");
+    final hrs = twoDigits(duration.inHours);
+    final min = twoDigits(duration.inMinutes.remainder(60));
+    final sec = twoDigits(duration.inSeconds.remainder(60));
+    return "$hrs:$min:$sec";
+  }
+
+  //STATUS
   String status = "Inactive";
-  String? selectedValue = 'Select Location';
   void setStatusActive() {
     setState(() {
       status = 'Active';
@@ -52,17 +101,26 @@ class _ClockInState extends State<ClockIn> {
       padding: EdgeInsets.all(10),
       child: Column(
         children: [
-          Container(
-            child: Row(
-              children: [
-                TimeBadge(status: status),
-                Spacer(),
-                LocationList(),
-              ],
-            ),
+          Row(
+            children: [
+              TimeBadge(status: status),
+              Spacer(),
+              LocationList(),
+            ],
           ),
           //timer and button for callback start
-          Time(),
+          Row(
+            children: [
+              Time(timerText: timerText()),
+              Spacer(),
+              Clockinbutton(
+                timerStart: start,
+                timerReset: reset,
+                statusActive: setStatusActive,
+                statusInactive: setStatusInactive,
+              ),
+            ],
+          ),
         ],
       ),
     );

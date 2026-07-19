@@ -5,6 +5,7 @@ import '../../../../../Controller/Login/AuthStorage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../Controller/Homepage/ClockIn/Biometric.dart';
 import 'Time.dart';
+import 'dart:async';
 
 class Clockinbutton extends StatelessWidget {
   final AuthStorage authStorage = AuthStorage();
@@ -13,10 +14,15 @@ class Clockinbutton extends StatelessWidget {
   final VoidCallback timerStart;
   final VoidCallback timerReset;
 
+  //status
+  final VoidCallback statusActive;
+  final VoidCallback statusInactive;
   Clockinbutton({
     super.key,
     required this.timerStart,
     required this.timerReset,
+    required this.statusActive,
+    required this.statusInactive,
   });
 
   @override
@@ -30,17 +36,20 @@ class Clockinbutton extends StatelessWidget {
             getUserCoordinates();
             biometric.checkBiometric();
             timerStart();
-            // //cicle of timer true and false
-            // authStorage.getTime().then((value) {
-            //   if (value == true) {
-            //     authStorage.saveTime(false);
-            //   } else {
-            //     timerKey.currentState?.initState();
-            //     authStorage.saveTime(true);
-            //   }
-            //   timerKey.currentState?.initState();
-            //   print("Time Value: $value");
-            // });
+            statusActive();
+            //cicle of timer true and false
+            authStorage.getTime().then((value) {
+              if (value == true) {
+                authStorage.saveTime(false);
+                timerReset();
+                statusInactive();
+              } else {
+                authStorage.saveTime(true);
+                timerStart();
+                statusActive();
+              }
+              print("Time Value: $value");
+            });
 
             print(val);
           },
