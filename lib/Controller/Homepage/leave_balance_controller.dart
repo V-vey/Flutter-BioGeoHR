@@ -2,12 +2,15 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+// import '../../Service/AuthStorage.dart';
+import '../../Service/Url.dart';
 
-import '../Login/AuthStorage.dart';
-class LeaveBalance{
-  
+class LeaveBalance {
+  final url api = url();
+
+  //Type Of Leave
   getLeave(data, type) async {
-    if (await type == "annual"){
+    if (await type == "annual") {
       String annual = data['annual_leave'].toString();
       return annual;
     } else if (await type == 'sick') {
@@ -23,15 +26,12 @@ class LeaveBalance{
   }
 
   Future<dynamic> getBalanceLeave(type) async {
+    //get global var
     final prefs = await SharedPreferences.getInstance();
-
     String? token = prefs.getString("token");
     String? userId = prefs.getString("id");
-    print(userId);
-    // print(token);
 
-    final url = Uri.parse('http://192.168.254.104:8080/api/balance/$userId');
-
+    final url = Uri.parse(api.getLeaveBalance(userId));
     final response = await http.get(
       url,
       headers: {
@@ -40,7 +40,7 @@ class LeaveBalance{
         "Content-Type": "application/json",
       },
     );
-    print(response.body);
+
     if (response.statusCode == 200) {
       return getLeave(jsonDecode(response.body), type);
     } else {

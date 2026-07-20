@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_biogeohr/Controller/Homepage/ClockIn/LocationCheck.dart';
-import '../../../../../Controller/Homepage/ClockIn/GetLocation.dart';
-import '../../../../../Controller/Login/AuthStorage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../../../../Controller/Homepage/ClockIn/Biometric.dart';
-import 'Time.dart';
-import 'dart:async';
+import 'package:flutter_biogeohr/Controller/Homepage/ClockIn/location_check.dart';
+// import '../../../../../Service/GetLocation.dart';
+import '../../../../../Service/AuthStorage.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+import '../../../../../Controller/Homepage/ClockIn/biometric.dart';
+// import 'Time.dart';
+// import 'dart:async';
 
-import 'package:local_auth/local_auth.dart';
+// import 'package:local_auth/local_auth.dart';
 
 class Clockinbutton extends StatelessWidget {
   final AuthStorage authStorage = AuthStorage();
@@ -36,8 +36,6 @@ class Clockinbutton extends StatelessWidget {
       children: [
         TextButton(
           onPressed: () async {
-            // biometric.checkBiometric();
-            print('asdasdasd  ${await biometric.authenticateUser()}');
             //check if the timer is running
             if (isRunning == true) {
               timerReset();
@@ -46,9 +44,10 @@ class Clockinbutton extends StatelessWidget {
               //check if the user is in the coordinate
               if (await verifyUserCoordinates() == true) {
                 //biometric check in the mobile:
-                biometric.authenticateUser();
-                timerStart();
-                statusActive();
+                if (await biometric.authenticateUser() == (true, null)) {
+                  timerStart();
+                  statusActive();
+                }
               } else {
                 print("User Not is the range of the location");
               }

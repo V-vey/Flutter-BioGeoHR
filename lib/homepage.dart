@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_biogeohr/Screens/Pages/Attendance/Attendance.dart';
+// import 'package:flutter_biogeohr/Screens/Pages/Attendance/attendance.dart';
 //Reusable
 import 'Screens/Reusable/Header.dart';
 import 'Screens/Reusable/Navigation.dart';
 
 //Homepage
-import 'Screens/Pages/Homepage/Container/LeaveBalance/LeaveBalance.dart';
-import 'Screens/Pages/Homepage/Container/TotalLate/TotalLate.dart';
+// import 'Screens/Pages/Homepage/Container/LeaveBalance/LeaveBalance.dart';
+// import 'Screens/Pages/Homepage/Container/TotalLate/TotalLate.dart';
 
 //Pages
-import 'Screens/Pages/Homepage/HomePageMain.dart';
-import 'Screens/Pages/Attendance/AttendancePageMain.dart';
+import 'Screens/Pages/Homepage/home_page_main.dart';
+import 'Screens/Pages/Attendance/attendance_page_main.dart';
 import 'Screens/Pages/Leave/LeavePageMain.dart';
-import 'Screens/Pages/Profile/ProfilePageMain.dart';
+import 'Screens/Pages/Profile/profile_page_main.dart';
 
 //Global Storage
-import 'Controller/Login/AuthStorage.dart';
+import 'Service/AuthStorage.dart';
 
 class Homepage extends StatefulWidget {
+  const Homepage({super.key});
+
   @override
   State<Homepage> createState() => _HomepageState();
 }
@@ -67,7 +69,7 @@ class _HomepageState extends State<Homepage> {
           //shadow ATOMIC
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.06), // CULUR sadow
+              color: Color(0x30000000), // CULUR sadow
               blurRadius: 12.0, // Softness :)
               spreadRadius: 3.0, // Thick!!! of the shadow
               // Pushes shadow UP into the body screen

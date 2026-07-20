@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../Controller/Homepage/ClockIn/GetLocation.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../../../../Controller/Login/AuthStorage.dart';
+import '../../../../../Service/GetLocation.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
+import '../../../../../Service/AuthStorage.dart';
 
 class LocationList extends StatefulWidget {
   @override

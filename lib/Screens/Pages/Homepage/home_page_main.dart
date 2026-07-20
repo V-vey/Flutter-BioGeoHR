@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_biogeohr/Screens/Pages/Homepage/Container/RecentLeave/RecentLeave.dart';
+import 'package:flutter_biogeohr/Screens/Pages/Homepage/Container/RecentLeave/recent_leave.dart';
 
-import 'Container/ClockIn/ClockIn.dart';
-import 'Container/LeaveBalance/LeaveBalance.dart';
-import 'Container/TotalLate/TotalLate.dart';
-import 'Container/Paycheck/Paycheck.dart';
-import 'Container/RecentAttendance/RecentAttendance.dart';
-import 'Container/ClockIn/Time.dart';
-import 'Container/Welcome/Welcome.dart';
+import 'Container/ClockIn/clock_in.dart';
+import 'Container/LeaveBalance/leave_balance.dart';
+import 'Container/TotalLate/total_late.dart';
+import 'Container/Paycheck/paycheck.dart';
+import 'Container/RecentAttendance/recent_attendance.dart';
+// import 'Container/ClockIn/time.dart';
+import 'Container/Welcome/welcome.dart';
 
-class HomePageMain extends StatefulWidget {
-  @override
-  State<HomePageMain> createState() => _HomePageMainState();
-}
+class HomePageMain extends StatelessWidget {
+  const HomePageMain({super.key});
 
-class _HomePageMainState extends State<HomePageMain>
-    with AutomaticKeepAliveClientMixin {
   bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
     var items = SingleChildScrollView(

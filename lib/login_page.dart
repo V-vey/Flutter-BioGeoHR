@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_biogeohr/Screens/LoginPage/TextBoxPassword.dart';
+import 'package:flutter_biogeohr/Screens/LoginPage/text_box_password.dart';
 
 //controller
-import 'Controller/Login/LoginText.dart';
+import 'Controller/Login/login.dart';
 
 //Login Page
 import 'Screens/Reusable/TextBioGeoHR.dart';
-import 'Screens/LoginPage/TextBoxEmail.dart';
-import 'Screens/LoginPage/TextBoxPassword.dart';
-import 'Screens/LoginPage/LoginButton.dart';
+import 'Screens/LoginPage/text_box_email.dart';
+// import 'Screens/LoginPage/text_box_password.dart';
+import 'Screens/LoginPage/login_button.dart';
 
 //testin widget
-import 'Testing/TestingButton.dart';
+import 'Testing/testing_button.dart';
 
 final TextEditingController _emailController = TextEditingController();
 final TextEditingController _passwordController = TextEditingController();

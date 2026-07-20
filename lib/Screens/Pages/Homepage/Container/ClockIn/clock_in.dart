@@ -1,15 +1,17 @@
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import '../../../../Reusable/Badge/TimeBadge.dart';
-import '../../../../../Controller/Homepage/ClockIn/GetLocation.dart';
-import 'Time.dart';
-import 'LocationList.dart';
-import 'ClockInButton.dart';
+import '../../../../Reusable/Badge/time_badge.dart';
+import '../../../../../Service/GetLocation.dart';
+import 'time.dart';
+import 'location_list.dart';
+import 'clock_in_button.dart';
 //testing
-import '../../../../../Controller/Homepage/LeaveBalanceController.dart';
+import '../../../../../Controller/Homepage/leave_balance_controller.dart';
 
 class ClockIn extends StatefulWidget {
+  const ClockIn({super.key});
+
   @override
   State<ClockIn> createState() => _ClockInState();
 }
@@ -20,7 +22,6 @@ class _ClockInState extends State<ClockIn> {
   final GetLocation location = GetLocation();
 
   //TIMER
-  @override
   Duration duration = Duration();
   Timer? timer;
   bool isRunning = false;
@@ -61,7 +62,6 @@ class _ClockInState extends State<ClockIn> {
   }
 
   //timer text format
-  @override
   String timerText() {
     // Format DIGITS
     String twoDigits(int n) => n.toString().padLeft(2, "0");

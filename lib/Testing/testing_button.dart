@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'TestingScreen.dart';
-import '../Controller/Login/LoginText.dart';
+// import 'TestingScreen.dart';
+import '../Controller/Login/login.dart';
 import '../homepage.dart';
-import '../Controller/Login/AuthStorage.dart';
+import '../Service/AuthStorage.dart';
 
 class TestingButton extends StatelessWidget {
   final Logintext logintext = Logintext();
@@ -18,9 +18,6 @@ class TestingButton extends StatelessWidget {
           foregroundColor: Colors.white, // Sets the text and icon color
         ),
         onPressed: () async {
-          print("fuck");
-          bool isSuccessful = await logintext.login('test@example.com', 'test');
-          print("fuck");
           //just to access easily
           Navigator.push(
             context,
