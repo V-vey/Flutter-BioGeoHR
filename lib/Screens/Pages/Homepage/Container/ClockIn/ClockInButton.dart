@@ -7,6 +7,8 @@ import '../../../../../Controller/Homepage/ClockIn/Biometric.dart';
 import 'Time.dart';
 import 'dart:async';
 
+import 'package:local_auth/local_auth.dart';
+
 class Clockinbutton extends StatelessWidget {
   final AuthStorage authStorage = AuthStorage();
   final Biometric biometric = Biometric();
@@ -34,8 +36,8 @@ class Clockinbutton extends StatelessWidget {
       children: [
         TextButton(
           onPressed: () async {
-            biometric.checkBiometric();
-
+            // biometric.checkBiometric();
+            print('asdasdasd  ${await biometric.authenticateUser()}');
             //check if the timer is running
             if (isRunning == true) {
               timerReset();
@@ -43,6 +45,8 @@ class Clockinbutton extends StatelessWidget {
             } else {
               //check if the user is in the coordinate
               if (await verifyUserCoordinates() == true) {
+                //biometric check in the mobile:
+                biometric.authenticateUser();
                 timerStart();
                 statusActive();
               } else {
